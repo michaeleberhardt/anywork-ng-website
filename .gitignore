@@ -1,0 +1,17 @@
+# Cloudflare Wrangler — local dev secrets, NIEMALS committen
+.dev.vars
+.dev.vars.*
+
+# Wrangler / Pages local cache
+.wrangler/
+node_modules/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS junk
+.DS_Store
+Thumbs.db

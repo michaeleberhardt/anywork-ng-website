@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Pages-Function sollte nicht im Index landen
+Disallow: /api/
+
+Sitemap: https://www.anywork.ing/sitemap.xml

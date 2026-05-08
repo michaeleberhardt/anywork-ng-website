@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>anywork NG — Ihr sicherer Remote-Arbeitsplatz</title>
+<meta name="description" content="Sicherer Fernzugriff auf Windows- und Linux-Arbeitsplätze. Aus dem Browser, ohne VPN. EU-gehostet, DSGVO-konform.">
+<meta name="theme-color" content="#0f1117">
+<meta property="og:title" content="anywork NG — Ihr sicherer Remote-Arbeitsplatz">
+<meta property="og:description" content="Browser auf. Arbeit los. Sicher per Design, EU-gehostet, audit-ready.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.anywork.ing">
+<meta property="og:image" content="https://www.anywork.ing/assets/og-image.svg">
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface-2: #232735; --border: #2a2e3f;
+    --text: #e4e7ef; --dim: #8b8fa3; --orange: #f97316; --blue: #3b82f6; --green: #22c55e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--orange); }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---- Header / Nav ---- */
+  header { position: sticky; top: 0; background: rgba(15,17,23,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 50; }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { color: var(--dim); font-size: 14px; font-weight: 500; }
+  .nav-links a:hover { color: var(--text); }
+  .btn { display: inline-block; padding: 10px 20px; border-radius: 50px; font-weight: 700; font-size: 14px; transition: transform 0.15s, box-shadow 0.15s; }
+  .btn-primary { background: var(--orange); color: var(--bg); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(249,115,22,0.35); color: var(--bg); }
+  .btn-ghost { color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost:hover { color: var(--text); border-color: var(--orange); }
+  @media (max-width: 720px) { .nav-links a:not(.btn) { display: none; } }
+
+  /* ---- Hero ---- */
+  .hero { padding: 80px 0 100px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 800px; height: 800px; background: radial-gradient(circle, rgba(249,115,22,0.12), transparent 60%); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: -200px; left: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,0.10), transparent 60%); pointer-events: none; }
+  .hero-eyebrow { color: var(--orange); font-size: 14px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; }
+  .hero h1 { font-size: 64px; font-weight: 200; line-height: 1.05; letter-spacing: -2px; margin-bottom: 24px; max-width: 880px; }
+  .hero h1 strong { font-weight: 700; background: linear-gradient(135deg, var(--text) 30%, var(--orange) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+  .hero p.lead { font-size: 20px; color: #b8bcc8; max-width: 720px; margin-bottom: 36px; line-height: 1.55; }
+  .hero p.lead strong { color: var(--text); font-weight: 500; }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 60px; }
+
+  /* Quick proof tiles */
+  .proofs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 720px; margin-top: 24px; }
+  .proof { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .proof-num { font-size: 36px; font-weight: 200; color: var(--orange); line-height: 1; margin-bottom: 8px; }
+  .proof-label { font-size: 13px; color: var(--dim); }
+  .proof-label strong { color: var(--text); font-weight: 600; }
+  @media (max-width: 720px) { .hero h1 { font-size: 40px; } .proofs { grid-template-columns: 1fr; } }
+
+  /* ---- Section common ---- */
+  section { padding: 80px 0; border-top: 1px solid var(--border); }
+  .section-eyebrow { color: var(--orange); font-size: 13px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; }
+  .section h2 { font-size: 38px; font-weight: 200; line-height: 1.15; letter-spacing: -1px; margin-bottom: 16px; }
+  .section h2 strong { font-weight: 700; color: var(--orange); }
+  .section .lead { font-size: 18px; color: var(--dim); max-width: 720px; margin-bottom: 56px; line-height: 1.55; }
+  @media (max-width: 720px) { .section h2 { font-size: 28px; } }
+
+  /* ---- Features ---- */
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .feature { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px; position: relative; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
+  .feature:hover { transform: translateY(-2px); border-color: var(--orange); }
+  .feature::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--orange)); }
+  .feature-icon { width: 44px; height: 44px; margin-bottom: 18px; }
+  .feature h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+  .feature p { font-size: 14px; color: var(--dim); line-height: 1.6; }
+  .feature p em { color: var(--orange); font-style: normal; font-weight: 600; }
+  @media (max-width: 980px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } }
+
+  /* ---- How it works ---- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px; position: relative; }
+  .step-num { position: absolute; top: -16px; left: 24px; width: 36px; height: 36px; border-radius: 50%; background: var(--orange); color: var(--bg); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
+  .step h3 { font-size: 18px; font-weight: 600; margin: 16px 0 10px; }
+  .step p { font-size: 14px; color: var(--dim); line-height: 1.6; }
+  @media (max-width: 720px) { .steps { grid-template-columns: 1fr; } }
+
+  /* ---- Trust / Security ---- */
+  .trust-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+  .trust-list { display: flex; flex-direction: column; gap: 16px; }
+  .trust-item { display: flex; gap: 14px; align-items: flex-start; }
+  .trust-check { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: rgba(249,115,22,0.12); border: 1.5px solid var(--orange); display: flex; align-items: center; justify-content: center; }
+  .trust-check::after { content: ''; width: 10px; height: 6px; border-left: 2px solid var(--orange); border-bottom: 2px solid var(--orange); transform: rotate(-45deg) translate(0, -2px); }
+  .trust-item strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 16px; }
+  .trust-item span { color: var(--dim); font-size: 14px; line-height: 1.5; }
+  .trust-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; text-align: center; position: relative; overflow: hidden; }
+  .trust-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(249,115,22,0.10), transparent 60%); pointer-events: none; }
+  .trust-card .badge { display: inline-block; padding: 4px 14px; border-radius: 50px; background: rgba(34,197,94,0.12); color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-bottom: 20px; }
+  .trust-card h3 { font-size: 28px; font-weight: 200; line-height: 1.2; margin-bottom: 14px; }
+  .trust-card h3 strong { font-weight: 700; color: var(--orange); }
+  .trust-card p { color: var(--dim); font-size: 14px; }
+  @media (max-width: 900px) { .trust-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+  /* ---- CTA ---- */
+  .cta-box { background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(59,130,246,0.06)); border: 1px solid var(--border); border-radius: 20px; padding: 60px 40px; text-align: center; }
+  .cta-box h2 { font-size: 36px; font-weight: 200; margin-bottom: 16px; }
+  .cta-box h2 strong { color: var(--orange); font-weight: 700; }
+  .cta-box p { color: var(--dim); font-size: 17px; max-width: 600px; margin: 0 auto 28px; }
+
+  /* ---- Footer ---- */
+  footer { padding: 48px 0 32px; border-top: 1px solid var(--border); color: var(--dim); font-size: 13px; }
+  .footer-grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: var(--dim); }
+  .footer-links a:hover { color: var(--orange); }
+</style>
+</head>
+<body>
+
+<!-- ============== Header ============== -->
+<header>
+  <div class="container nav">
+    <a href="/" aria-label="anywork NG Startseite" style="display: flex; align-items: center;">
+      <svg viewBox="0 0 200 40" width="160" height="32">
+        <defs>
+          <linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#3b82f6"/>
+            <stop offset="100%" stop-color="#f97316"/>
+          </linearGradient>
+        </defs>
+        <circle cx="14" cy="20" r="5" fill="url(#logo-grad)"/>
+        <circle cx="30" cy="10" r="3.5" fill="#3b82f6" opacity="0.7"/>
+        <circle cx="30" cy="30" r="3.5" fill="#f97316" opacity="0.7"/>
+        <line x1="18" y1="18" x2="27" y2="11" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+        <line x1="18" y1="22" x2="27" y2="29" stroke="#f97316" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="14" cy="20" r="9" stroke="url(#logo-grad)" stroke-width="1" opacity="0.25" fill="none"/>
+        <text x="42" y="28" font-family="-apple-system, sans-serif" font-size="22" font-weight="300" fill="#e4e7ef" letter-spacing="-0.5">anywork</text>
+        <text x="130" y="28" font-family="-apple-system, sans-serif" font-size="22" font-weight="700" fill="#f97316" letter-spacing="1">NG</text>
+      </svg>
+    </a>
+    <nav class="nav-links">
+      <a href="#features">Funktionen</a>
+      <a href="#how">So funktioniert es</a>
+      <a href="#trust">Sicherheit</a>
+      <a href="/kontakt.html" class="btn btn-primary">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============== Hero ============== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Ihr sicherer Remote-Arbeitsplatz der nächsten Generation</div>
+    <h1>Browser auf.<br><strong>Arbeit los.</strong></h1>
+    <p class="lead">
+      Anwender greifen vom Browser aus auf Windows- und Linux-Arbeitsplätze zu —
+      vom PC, Laptop, Tablet oder Smartphone. <strong>Ohne VPN, ohne offene Ports, ohne Endpunkt-Software.</strong>
+      Sicher per Design, EU-gehostet, audit-ready.
+    </p>
+    <div class="hero-cta">
+      <a href="/kontakt.html" class="btn btn-primary">Unverbindlich testen</a>
+      <a href="#features" class="btn btn-ghost">Funktionen ansehen</a>
+    </div>
+
+    <div class="proofs">
+      <div class="proof">
+        <div class="proof-num">0</div>
+        <div class="proof-label"><strong>offene Ports</strong> am Zielsystem</div>
+      </div>
+      <div class="proof">
+        <div class="proof-num">4</div>
+        <div class="proof-label"><strong>verschlüsselte Sprünge</strong> Browser → Ziel</div>
+      </div>
+      <div class="proof">
+        <div class="proof-num">EU</div>
+        <div class="proof-label"><strong>DSGVO-Hosting</strong> in EU-Rechenzentrum</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Features ============== -->
+<section id="features" class="section">
+  <div class="container">
+    <div class="section-eyebrow">Funktionen</div>
+    <h2>Sechs Dinge, die <strong>uns ausmachen</strong>.</h2>
+    <p class="lead">Sicherheit, Tempo, Intuitivität — und drei Detailpunkte, in denen wir spürbar besser sind als die naheliegenden Alternativen.</p>
+
+    <div class="features-grid">
+      <!-- 1 -->
+      <div class="feature">
+        <svg class="feature-icon" viewBox="0 0 36 36">
+          <rect x="2" y="6" width="32" height="24" rx="3" fill="none" stroke="#f97316" stroke-width="1.8"/>
+          <line x1="2" y1="13" x2="34" y2="13" stroke="#f97316" stroke-width="1.8"/>
+          <circle cx="6.5" cy="9.5" r="0.9" fill="#f97316"/>
+          <circle cx="9.5" cy="9.5" r="0.9" fill="#f97316"/>
+          <circle cx="12.5" cy="9.5" r="0.9" fill="#f97316"/>
+          <path d="M 12 22 L 18 26 L 24 18" stroke="#3b82f6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Browser-only</h3>
+        <p>Kein lokaler Client. Keine Plug-Ins. Funktioniert auf jedem Gerät mit aktuellem Browser — auch <em>geliehene Tablets beim Kunden</em>.</p>
+      </div>
+      <!-- 2 -->
+      <div class="feature">
+        <svg class="feature-icon" viewBox="0 0 36 36">
+          <path d="M18 4 L30 9 V18 C30 24 24 30 18 32 C12 30 6 24 6 18 V9 Z" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linejoin="round"/>
+          <circle cx="18" cy="17" r="3.5" fill="none" stroke="#3b82f6" stroke-width="1.8"/>
+          <line x1="18" y1="20.5" x2="18" y2="25" stroke="#3b82f6" stroke-width="1.8"/>
+        </svg>
+        <h3>Zwei-Faktor + Recovery-Codes</h3>
+        <p>TOTP via Authenticator-App, plus 10 einmalige Wiederherstellungscodes für den Notfall. <em>Smartphone weg ≠ Account verloren</em>.</p>
+      </div>
+      <!-- 3 -->
+      <div class="feature">
+        <svg class="feature-icon" viewBox="0 0 36 36">
+          <rect x="2" y="6" width="14" height="10" rx="1" fill="none" stroke="#f97316" stroke-width="1.6"/>
+          <rect x="7.5" y="16" width="3" height="2" fill="#f97316"/>
+          <rect x="5" y="18" width="8" height="1.2" rx="0.5" fill="#f97316"/>
+          <rect x="20" y="7" width="14" height="9" rx="1" fill="none" stroke="#3b82f6" stroke-width="1.6"/>
+          <line x1="19" y1="17" x2="35" y2="17" stroke="#3b82f6" stroke-width="1.6" stroke-linecap="round"/>
+          <rect x="2" y="22" width="14" height="11" rx="1.5" fill="none" stroke="#3b82f6" stroke-width="1.6"/>
+          <circle cx="9" cy="31" r="0.6" fill="#3b82f6"/>
+          <rect x="22" y="20" width="8" height="13" rx="1.5" fill="none" stroke="#f97316" stroke-width="1.6"/>
+          <circle cx="26" cy="31" r="0.7" fill="#f97316"/>
+        </svg>
+        <h3>Jedes Endgerät</h3>
+        <p>PC, Laptop, Tablet oder Smartphone — Windows, macOS, Linux, iOS, Android. <em>Wo ein moderner Browser läuft, läuft anywork NG</em>.</p>
+      </div>
+      <!-- 4 -->
+      <div class="feature">
+        <svg class="feature-icon" viewBox="0 0 36 36">
+          <rect x="6" y="4" width="22" height="28" rx="2" fill="none" stroke="#f97316" stroke-width="1.8"/>
+          <line x1="10" y1="11" x2="22" y2="11" stroke="#3b82f6" stroke-width="1.5"/>
+          <line x1="10" y1="16" x2="24" y2="16" stroke="#3b82f6" stroke-width="1.5"/>
+          <line x1="10" y1="21" x2="20" y2="21" stroke="#3b82f6" stroke-width="1.5"/>
+          <circle cx="26" cy="26" r="4" fill="#0f1117" stroke="#f97316" stroke-width="1.5"/>
+          <path d="M 24 26 L 25.5 27.5 L 28 25" stroke="#f97316" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <h3>Revisionssicheres Audit</h3>
+        <p>Jeder Login, jede Sitzung, jede Admin-Aktion lückenlos protokolliert — 365 Tage Aufbewahrung, schreibgeschützt. <em>Ihr Cyber-Versicherer wird das lieben</em>.</p>
+      </div>
+      <!-- 5 -->
+      <div class="feature">
+        <svg class="feature-icon" viewBox="0 0 36 36">
+          <rect x="7" y="16" width="22" height="16" rx="2" fill="none" stroke="#f97316" stroke-width="1.8"/>
+          <path d="M 11 16 V 11 a 7 7 0 0 1 14 0 V 16" fill="none" stroke="#3b82f6" stroke-width="1.8"/>
+          <circle cx="18" cy="23" r="1.8" fill="#f97316"/>
+          <line x1="18" y1="24" x2="18" y2="28" stroke="#f97316" stroke-width="1.5"/>
+        </svg>
+        <h3>Verschlüsselt. Immer.</h3>
+        <p>Geheimnisse, Passwörter und Token sind <em>verschlüsselt oder gehasht</em> in der Datenbank. Datenbank-Diebstahl ≠ Account-Übernahme.</p>
+      </div>
+      <!-- 6 -->
+      <div class="feature">
+        <svg class="feature-icon" viewBox="0 0 36 36">
+          <path d="M 8 22 a 6 6 0 1 1 4 -10 a 5 5 0 0 1 9 1 a 5 5 0 0 1 6 9 H 10 a 4 4 0 0 1 -2 -7 Z" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M 16 24 V 30 M 13 27 H 19" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+          <path d="M 22 25 V 31 M 19 28 H 25" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h3>Wir betreiben, Sie nutzen</h3>
+        <p>Keine eigenen Server, keine Wartungs-Wochenenden, keine Update-Pipelines. <em>Wir kümmern uns um Plattform, Patches und Backups</em> — Sie bekommen einen Zugang.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== How it works ============== -->
+<section id="how" class="section">
+  <div class="container">
+    <div class="section-eyebrow">So funktioniert es</div>
+    <h2>Drei Schritte. <strong>Keine Beratungsleistung.</strong></h2>
+    <p class="lead">Sie machen einen Onboarding-Call mit uns, wir richten ein. Danach laden Sie Ihre Anwender ein. Der Rest passiert von selbst.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Onboarding-Call mit uns</h3>
+        <p>Wir richten Ihr Konto ein, hinterlegen Ihr Branding und besprechen die Anwender-Liste.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Agent installieren</h3>
+        <p>Wir oder Ihr IT-Dienstleister installiert einmalig den Vermittlungs-Dienst auf einem bestehenden Windows-Host bei Ihnen.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Anwender einladen</h3>
+        <p>Login-Link teilen, Zwei-Faktor einrichten lassen, fertig. Kein Client auf den Geräten, kein Routing-Aufwand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Trust / Security ============== -->
+<section id="trust" class="section">
+  <div class="container">
+    <div class="section-eyebrow">Vertrauen</div>
+    <h2>Was Ihr <strong>Datenschutz-Beauftragter</strong> schon hat.</h2>
+    <p class="lead">Wir liefern alles, was eine ernsthafte Compliance-Prüfung braucht — bevor Sie es anfragen.</p>
+
+    <div class="trust-grid">
+      <div class="trust-list">
+        <div class="trust-item">
+          <div class="trust-check"></div>
+          <div>
+            <strong>Sicherheits-Whitepaper in zwei Varianten</strong>
+            <span>Technisch (für IT-Audit) und nicht-technisch (für DSB und Compliance) — beide aktuell, beide direkt teilbar.</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-check"></div>
+          <div>
+            <strong>Auftragsverarbeitungs-Vertrag (Art. 28 DSGVO)</strong>
+            <span>Vorlage in verständlichem Deutsch, ohne Legalese-Schleifen.</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-check"></div>
+          <div>
+            <strong>Hosting ausschließlich in der EU</strong>
+            <span>Sub-Auftragsverarbeiter im AV-Vertrag dokumentiert.</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-check"></div>
+          <div>
+            <strong>TOMs nach Art. 32 DSGVO</strong>
+            <span>Verschlüsselung, Vertraulichkeit, Integrität, Verfügbarkeit, Belastbarkeit, Wiederherstellbarkeit — vollständig dokumentiert.</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-check"></div>
+          <div>
+            <strong>Klare Datenkategorien</strong>
+            <span>Mit ausdrücklicher Negativ-Liste: keine Bildschirminhalte, keine Tastatureingaben, keine Sitzungs-Aufzeichnungen.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-card">
+        <div class="badge">DSGVO · BSI-orientiert</div>
+        <h3>Die Plattform vermittelt Verbindungen.<br><strong>Sie speichert keine Inhalte.</strong></h3>
+        <p>Was wir speichern: Benutzerkonten, Berechtigungen, Audit-Log. Was wir nicht speichern: alles, was während Ihrer Remote-Sitzung passiert.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA ============== -->
+<section class="section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Bereit für den <strong>ersten Klick</strong>?</h2>
+      <p>Testen Sie uns unverbindlich und kostenlos. Unsere Partner sind für Ihre Anfragen jederzeit verfügbar.</p>
+      <a href="/kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Footer ============== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>© <script>document.write(new Date().getFullYear())</script> anywork NG · Sicherer Remote-Arbeitsplatz</div>
+      <nav class="footer-links">
+        <a href="/impressum.html">Impressum</a>
+        <a href="/kontakt.html">Kontakt</a>
+        <a href="https://github.com/michaeleberhardt/anywork-ng" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

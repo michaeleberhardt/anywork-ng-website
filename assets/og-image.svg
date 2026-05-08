@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1117"/>
+      <stop offset="100%" stop-color="#1a1d27"/>
+    </linearGradient>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="950" cy="180" rx="500" ry="400" fill="url(#glow)"/>
+
+  <!-- Logo -->
+  <g transform="translate(60,50)">
+    <circle cx="14" cy="20" r="6" fill="url(#grad)"/>
+    <circle cx="34" cy="8" r="4" fill="#3b82f6" opacity="0.8"/>
+    <circle cx="34" cy="32" r="4" fill="#f97316" opacity="0.8"/>
+    <line x1="20" y1="17" x2="30" y2="9" stroke="#3b82f6" stroke-width="1.8" opacity="0.6"/>
+    <line x1="20" y1="23" x2="30" y2="31" stroke="#f97316" stroke-width="1.8" opacity="0.6"/>
+    <text x="50" y="30" font-family="-apple-system, sans-serif" font-size="26" font-weight="300" fill="#e4e7ef" letter-spacing="-1">anywork</text>
+    <text x="160" y="30" font-family="-apple-system, sans-serif" font-size="26" font-weight="700" fill="#f97316" letter-spacing="2">NG</text>
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="60" y="220" font-family="-apple-system, sans-serif" font-size="20" font-weight="600" fill="#f97316" letter-spacing="6">IHR SICHERER REMOTE-ARBEITSPLATZ</text>
+
+  <!-- Big Title -->
+  <text x="60" y="340" font-family="-apple-system, sans-serif" font-size="92" font-weight="200" fill="#e4e7ef" letter-spacing="-2">Browser auf.</text>
+  <text x="60" y="440" font-family="-apple-system, sans-serif" font-size="92" font-weight="700" fill="#f97316" letter-spacing="-2">Arbeit los.</text>
+
+  <!-- Underline -->
+  <rect x="60" y="465" width="200" height="5" fill="url(#grad)"/>
+
+  <!-- Subtitle -->
+  <text x="60" y="540" font-family="-apple-system, sans-serif" font-size="22" fill="#b8bcc8" font-weight="300">Sicherer Fernzugriff auf Windows- und Linux-Arbeitsplätze.</text>
+  <text x="60" y="572" font-family="-apple-system, sans-serif" font-size="22" fill="#b8bcc8" font-weight="300">Aus dem Browser. Ohne VPN. EU-gehostet.</text>
+
+  <!-- URL -->
+  <text x="1140" y="595" text-anchor="end" font-family="-apple-system, sans-serif" font-size="18" font-weight="600" fill="#5a5f6f" letter-spacing="2">anywork.ing</text>
+</svg>
