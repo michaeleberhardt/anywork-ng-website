@@ -17,7 +17,7 @@ website/
 │   └── og-image.svg        # Open-Graph-Image für Link-Previews
 └── functions/
     └── api/
-        └── contact.js      # Pages Function: POST /api/contact (E-Mail-Versand via Resend)
+        └── contact.js      # Pages Function: POST /api/contact (E-Mail-Versand via Brevo)
 ```
 
 ## Lokal ansehen
@@ -69,21 +69,22 @@ Cloudflare gibt dir nun zwei Möglichkeiten je nach DNS-Setup:
 2. Apex `anywork.ing` → netcup unterstützt kein ANAME/ALIAS auf externe CNAMEs. Lösung: bei netcup eine **Domain-Weiterleitung** von `anywork.ing` → `https://www.anywork.ing` einrichten (im netcup-CCP unter Domain → Weiterleitung)
 3. Pages erkennt das CNAME, stellt automatisch ein TLS-Zertifikat aus und schaltet die Custom Domain live
 
-### Schritt 3 — Resend API für Kontaktformular
+### Schritt 3 — Brevo API für Kontaktformular
 
-Das Kontaktformular nutzt [Resend](https://resend.com) zum Mail-Versand (Free Tier: 100 Mails/Tag, 3.000/Monat — ausreichend für ein Kontaktformular).
+Das Kontaktformular nutzt [Brevo](https://www.brevo.com) (vormals Sendinblue, Hauptsitz Paris) zum Mail-Versand. Free Tier: 300 Mails/Tag — ausreichend für ein Kontaktformular, und als EU-Anbieter passend zur DSGVO-Positionierung der Plattform.
 
-1. Account bei resend.com anlegen
-2. **Domain** verifizieren: `anywork.ing` hinzufügen → Resend zeigt SPF + DKIM DNS-Records
-3. Diese Records bei Cloudflare DNS (oder netcup, je nach Variante oben) eintragen
-4. Sobald grün: API-Key generieren unter **API Keys** → Berechtigung „Sending access" reicht
+1. Account bei brevo.com anlegen
+2. **Senders & IP** → **Domains** → `anywork.ing` hinzufügen und authentifizieren → Brevo zeigt DKIM- und Brevo-Code-Records (sowie optional SPF)
+3. Diese Records bei Cloudflare DNS (oder netcup, je nach Variante oben) eintragen — sobald alle grün sind, ist die Domain authentifiziert
+4. **SMTP & API** → **API Keys** → **Generate a new API key** (Berechtigung „Send transactional emails" reicht). Key beginnt mit `xkeysib-...`
 5. In Cloudflare Pages: **Project → Settings → Environment variables**:
    ```
-   RESEND_API_KEY = re_xxxxxxxxxxxxxxxxxxxxxxxx
-   FROM_EMAIL     = kontakt@anywork.ing
-   TARGET_EMAIL   = kontakt@anywork.ing
+   BREVO_API_KEY = xkeysib-xxxxxxxxxxxxxxxxxxxxxxxx
+   FROM_EMAIL    = kontakt@anywork.ing
+   FROM_NAME     = anywork NG
+   TARGET_EMAIL  = kontakt@anywork.ing
    ```
-   (FROM_EMAIL muss auf die in Resend verifizierte Domain enden, sonst wird der Mail-Versand abgelehnt.)
+   (FROM_EMAIL muss auf die in Brevo authentifizierte Domain enden, sonst wird der Mail-Versand abgelehnt. FROM_NAME ist optional — Default „anywork NG".)
 6. **Deployments** → erneut deployen, damit die Environment-Variablen aktiv werden
 
 ### Schritt 4 — Verifikation
@@ -105,7 +106,7 @@ Pull-Request gegen `main` erzeugt automatisch eine **Preview-Deployment** unter 
 ## Pflicht vor Live-Schaltung
 
 - [ ] **`impressum.html`** — alle `{Platzhalter}` durch echte Anbieter-Daten ersetzen (Firma, Anschrift, Geschäftsführer, HRB, USt-ID, Telefon)
-- [ ] **`kontakt@anywork.ing`** als E-Mail-Adresse einrichten und im Resend-Account verifizieren
+- [ ] **`kontakt@anywork.ing`** als E-Mail-Adresse einrichten und Domain im Brevo-Account authentifizieren
 - [ ] **Datenschutzerklärung ergänzen?** — sobald die Site Tracking-Tools, Analytics oder Cookies einsetzt, ist eine separate Datenschutzerklärung nötig. Aktuell: keine Cookies, kein Tracking → Hinweis im Impressum reicht. Wenn das später dazu kommt: separate `datenschutz.html` anlegen und im Footer verlinken.
 - [ ] **Test-Submit** auf produktiver Site, um End-to-End-Mail-Pfad zu verifizieren
 
@@ -123,8 +124,9 @@ wrangler pages dev . --port 8788
 Setze Environment-Variablen lokal in einer `.dev.vars`-Datei (nicht committen!):
 
 ```
-RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxx
+BREVO_API_KEY=xkeysib-xxxxxxxxxxxxxxxxxxxxxxxx
 FROM_EMAIL=kontakt@anywork.ing
+FROM_NAME=anywork NG
 TARGET_EMAIL=deine-test-mail@example.com
 ```
 

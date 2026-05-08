@@ -2,16 +2,21 @@
 //
 // Nimmt Kontaktformular-Submits entgegen, validiert serverseitig,
 // erkennt Bots über das Honeypot-Feld und schickt die Nachricht
-// per Resend API an die in TARGET_EMAIL hinterlegte Adresse.
+// per Brevo Transactional Email API an die in TARGET_EMAIL
+// hinterlegte Adresse. Brevo (vormals Sendinblue) ist ein
+// EU-Anbieter mit Hauptsitz in Paris und passt zur DSGVO-
+// Positionierung der Plattform.
 //
 // Erforderliche Cloudflare-Pages-Environment-Variablen
 // (Dashboard → Settings → Environment variables):
-//   RESEND_API_KEY  — von resend.com (Free Tier: 100 Mails/Tag, 3.000/Monat)
-//   FROM_EMAIL      — z. B. "kontakt@anywork.ing" — muss bei Resend
-//                     verifiziert sein (DNS: SPF + DKIM)
+//   BREVO_API_KEY   — von brevo.com (Free Tier: 300 Mails/Tag)
+//   FROM_EMAIL      — z. B. "kontakt@anywork.ing" — muss als Sender
+//                     bei Brevo verifiziert sein (DNS: SPF + DKIM)
+//   FROM_NAME       — optional, Anzeigename des Absenders
+//                     (Default: "anywork NG")
 //   TARGET_EMAIL    — Empfänger-Adresse, z. B. "kontakt@anywork.ing"
 //
-// Wenn diese Variablen fehlen, antwortet die Funktion mit 503 — die
+// Wenn Pflicht-Variablen fehlen, antwortet die Funktion mit 503 — die
 // Site bleibt online, das Formular zeigt eine sprechende Fehlermeldung.
 
 const RATE_LIMIT_MAX = 5;          // Submits
@@ -87,11 +92,12 @@ export async function onRequestPost({ request, env }) {
   }
 
   // --- Required env vars ---
-  const apiKey = env.RESEND_API_KEY;
+  const apiKey = env.BREVO_API_KEY;
   const fromEmail = env.FROM_EMAIL;
+  const fromName = env.FROM_NAME || 'anywork NG';
   const targetEmail = env.TARGET_EMAIL;
   if (!apiKey || !fromEmail || !targetEmail) {
-    console.error('contact form: missing env vars (RESEND_API_KEY/FROM_EMAIL/TARGET_EMAIL)');
+    console.error('contact form: missing env vars (BREVO_API_KEY/FROM_EMAIL/TARGET_EMAIL)');
     return new Response(
       JSON.stringify({ error: 'Mail-Versand ist serverseitig nicht konfiguriert. Bitte direkt an kontakt@anywork.ing schreiben.' }),
       { status: 503, headers },
@@ -126,34 +132,36 @@ ${escapeHtml(message)}
   <p style="margin-top: 24px; color: #8b8fa3; font-size: 12px;">Über Kontaktformular auf anywork.ing</p>
 </div>`.trim();
 
-  // --- Send via Resend ---
+  // --- Send via Brevo Transactional Email API ---
+  // Doku: https://developers.brevo.com/reference/sendtransacemail
   try {
-    const resp = await fetch('https://api.resend.com/emails', {
+    const resp = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${apiKey}`,
+        'api-key': apiKey,
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
       body: JSON.stringify({
-        from: fromEmail,
-        to: [targetEmail],
-        reply_to: email,
+        sender: { name: fromName, email: fromEmail },
+        to: [{ email: targetEmail }],
+        replyTo: { email, name: name.trim() },
         subject,
-        text: safeBody,
-        html: htmlBody,
+        textContent: safeBody,
+        htmlContent: htmlBody,
       }),
     });
 
     if (!resp.ok) {
       const err = await resp.text().catch(() => '');
-      console.error('Resend error:', resp.status, err);
+      console.error('Brevo error:', resp.status, err);
       return new Response(
         JSON.stringify({ error: 'Mail konnte nicht zugestellt werden. Bitte direkt an kontakt@anywork.ing schreiben.' }),
         { status: 502, headers },
       );
     }
   } catch (err) {
-    console.error('Resend network error:', err);
+    console.error('Brevo network error:', err);
     return new Response(
       JSON.stringify({ error: 'Netzwerkfehler beim Mail-Versand. Bitte direkt an kontakt@anywork.ing schreiben.' }),
       { status: 502, headers },
