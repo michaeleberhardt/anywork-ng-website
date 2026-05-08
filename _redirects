@@ -1,8 +1,9 @@
 # Cloudflare Pages — Redirects
 # Doku: https://developers.cloudflare.com/pages/configuration/redirects/
 
-# Apex auf www umleiten (zusätzlich zur DNS-Konfiguration)
-https://anywork.ing/*  https://www.anywork.ing/:splat  301
-
-# Alte Pfade / Legacy-Links — wenn später nötig hier ergänzen
+# Apex → www wird per Cloudflare-Page-Rule (oder DNS-Redirect bei netcup)
+# erledigt — Pages-_redirects akzeptiert nur relative Source-Pfade auf der
+# eigenen Domain, kann also kein Cross-Hostname-Redirect.
+#
+# Alte Pfade / Legacy-Links — wenn später nötig hier ergänzen:
 # /alt-pfad  /neuer-pfad  301
