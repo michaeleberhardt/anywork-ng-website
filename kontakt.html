@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kontakt — anywork NG</title>
-<meta name="description" content="Schreiben Sie uns. Unser Team antwortet zeitnah.">
+<meta name="description" content="Schreiben Sie uns. Wir sind für Sie da.">
 <meta name="theme-color" content="#0f1117">
 <meta name="robots" content="index, follow">
 <style>
@@ -49,10 +49,10 @@
   .submit-row { display: flex; align-items: center; gap: 16px; margin-top: 12px; }
   .btn {
     display: inline-block; padding: 12px 28px; border-radius: 50px; font-weight: 700; font-size: 15px;
-    border: none; cursor: pointer; font-family: inherit; transition: transform 0.15s, box-shadow 0.15s;
+    border: none; cursor: pointer; font-family: inherit; transition: transform 0.15s, box-shadow 0.15s, color 0.15s;
   }
-  .btn-primary { background: var(--orange); color: var(--bg); }
-  .btn-primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(249,115,22,0.35); }
+  .btn-primary { background: var(--orange); color: #000; }
+  .btn-primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(249,115,22,0.35); color: #fff; }
   .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
   .alert { padding: 14px 18px; border-radius: 10px; font-size: 14px; margin-bottom: 16px; }
@@ -97,7 +97,7 @@
 
 <main>
   <div class="container">
-    <h1>Schreiben Sie uns. <strong>Wir antworten zeitnah.</strong></h1>
+    <h1>Schreiben Sie uns. <strong>Wir sind für Sie da.</strong></h1>
     <p class="lead">Anfragen zu Demos, Sicherheits-Whitepapern, AV-Vertrag oder einfach „passt das für uns?" — wir freuen uns auf Ihre Nachricht.</p>
 
     <div id="status"></div>
@@ -147,7 +147,7 @@
 
 <footer>
   <div class="container">
-    <span>© <script>document.write(new Date().getFullYear())</script> anywork NG</span>
+    <span>© 2026 EberhardtConsulting</span>
     <span><a href="/">Startseite</a><a href="/impressum.html">Impressum</a></span>
   </div>
 </footer>
@@ -174,7 +174,7 @@
       const body = await res.json().catch(() => ({}));
 
       if (res.ok) {
-        statusEl.innerHTML = '<div class="alert alert-success">Vielen Dank — Ihre Nachricht ist angekommen. Wir antworten zeitnah.</div>';
+        statusEl.innerHTML = '<div class="alert alert-success">Vielen Dank — Ihre Nachricht ist angekommen. Wir melden uns zeitnah bei Ihnen.</div>';
         form.reset();
       } else {
         const msg = body.error || 'Bitte versuchen Sie es erneut oder schreiben Sie direkt an kontakt@anywork.ing.';

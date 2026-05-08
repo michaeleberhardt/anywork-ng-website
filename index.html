@@ -27,13 +27,13 @@
   header { position: sticky; top: 0; background: rgba(15,17,23,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 50; }
   .nav { display: flex; align-items: center; justify-content: space-between; height: 60px; }
   .nav-links { display: flex; gap: 28px; align-items: center; }
-  .nav-links a { color: var(--dim); font-size: 14px; font-weight: 500; }
-  .nav-links a:hover { color: var(--text); }
-  .btn { display: inline-block; padding: 10px 20px; border-radius: 50px; font-weight: 700; font-size: 14px; transition: transform 0.15s, box-shadow 0.15s; }
-  .btn-primary { background: var(--orange); color: var(--bg); }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(249,115,22,0.35); color: var(--bg); }
+  .nav-links a:not(.btn) { color: var(--dim); font-size: 14px; font-weight: 500; }
+  .nav-links a:not(.btn):hover { color: var(--text); }
+  .btn { display: inline-block; padding: 10px 20px; border-radius: 50px; font-weight: 700; font-size: 14px; transition: transform 0.15s, box-shadow 0.15s, color 0.15s; }
+  .btn-primary { background: var(--orange); color: #000; }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(249,115,22,0.35); color: #fff; }
   .btn-ghost { color: var(--text); border: 1px solid var(--border); }
-  .btn-ghost:hover { color: var(--text); border-color: var(--orange); }
+  .btn-ghost:hover { color: #fff; border-color: var(--orange); }
   @media (max-width: 720px) { .nav-links a:not(.btn) { display: none; } }
 
   /* ---- Hero ---- */
@@ -359,11 +359,10 @@
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div>© <script>document.write(new Date().getFullYear())</script> anywork NG · Sicherer Remote-Arbeitsplatz</div>
+      <div>© 2026 EberhardtConsulting</div>
       <nav class="footer-links">
         <a href="/impressum.html">Impressum</a>
         <a href="/kontakt.html">Kontakt</a>
-        <a href="https://github.com/michaeleberhardt/anywork-ng" rel="noopener">GitHub</a>
       </nav>
     </div>
   </div>
