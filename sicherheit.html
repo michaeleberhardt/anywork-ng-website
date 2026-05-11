@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sicherheit &amp; DSGVO — anywork NG | TOMs, Verschlüsselung, Audit, Architektur</title>
+<meta name="description" content="Sicherheits-Übersicht von anywork NG für IT-Verantwortliche, Geschäftsführung und Datenschutz-Beauftragte. Architektur, Verschlüsselung, Zwei-Faktor, Audit-Log, TOMs nach Art. 32 DSGVO, AV-Vertrag.">
+<meta name="theme-color" content="#0f1117">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.anywork.ing/sicherheit.html">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<meta property="og:title" content="Sicherheit &amp; DSGVO — anywork NG">
+<meta property="og:description" content="Architektur, Verschlüsselung, Audit, TOMs nach Art. 32 DSGVO — anwenderfreundlich erklärt.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.anywork.ing/sicherheit.html">
+<meta property="og:image" content="https://www.anywork.ing/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="anywork NG">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.anywork.ing/assets/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "@id": "https://www.anywork.ing/sicherheit.html#article",
+  "headline": "Sicherheit & DSGVO — anywork NG",
+  "description": "Sicherheits-Übersicht von anywork NG: Architektur, Verschlüsselung, Zwei-Faktor, Audit-Log, TOMs nach Art. 32 DSGVO, AV-Vertrag.",
+  "url": "https://www.anywork.ing/sicherheit.html",
+  "inLanguage": "de",
+  "isPartOf": {"@type":"WebSite","url":"https://www.anywork.ing/","name":"anywork NG"},
+  "author": {"@type":"Organization","name":"anywork NG","url":"https://www.anywork.ing/"},
+  "publisher": {"@type":"Organization","name":"anywork NG","url":"https://www.anywork.ing/","logo":{"@type":"ImageObject","url":"https://www.anywork.ing/assets/apple-touch-icon.png"}},
+  "datePublished": "2026-05-11",
+  "dateModified": "2026-05-11",
+  "proficiencyLevel": "Beginner",
+  "about": ["Verschlüsselung","DSGVO","TOMs","Zwei-Faktor-Authentifizierung","Mandantenfähigkeit","Audit-Log"]
+}
+</script>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface-2: #232735; --border: #2a2e3f;
+    --text: #e4e7ef; --dim: #8b8fa3; --orange: #f97316; --blue: #3b82f6; --green: #22c55e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--orange); }
+  .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--border); padding: 18px 0; }
+  header .container { max-width: 1180px; display: flex; align-items: center; justify-content: space-between; }
+  .back { color: var(--dim); font-size: 14px; }
+  .back:hover { color: var(--text); }
+
+  main { padding: 64px 0 80px; }
+  h1 { font-size: 40px; font-weight: 200; margin-bottom: 12px; letter-spacing: -1px; }
+  h1 strong { font-weight: 700; color: var(--orange); }
+  .lead { color: var(--dim); font-size: 17px; margin-bottom: 40px; max-width: 760px; }
+
+  .toc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 48px; }
+  .toc h2 { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .toc ol { padding-left: 20px; color: var(--dim); font-size: 14px; }
+  .toc li { margin-bottom: 4px; }
+  .toc a { color: var(--dim); }
+  .toc a:hover { color: var(--text); }
+
+  section.kap { margin-bottom: 40px; }
+  section.kap > h2 { font-size: 24px; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.3px; }
+  section.kap > h2 .num { color: var(--orange); font-weight: 700; margin-right: 12px; font-size: 14px; letter-spacing: 2px; }
+  section.kap h3 { font-size: 17px; font-weight: 600; margin: 22px 0 8px; color: var(--text); }
+  section.kap p { color: var(--dim); margin-bottom: 12px; font-size: 15px; }
+  section.kap p strong { color: var(--text); font-weight: 600; }
+  section.kap ul { margin: 4px 0 16px 20px; color: var(--dim); font-size: 15px; }
+  section.kap ul li { margin-bottom: 6px; }
+  section.kap ul li strong { color: var(--text); }
+  blockquote { border-left: 3px solid var(--orange); padding: 4px 18px; margin: 12px 0 18px; color: var(--text); background: rgba(249,115,22,0.05); font-size: 15px; }
+
+  table.facts { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0 16px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  table.facts th, table.facts td { padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  table.facts thead th { background: var(--surface-2); font-weight: 700; font-size: 12.5px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--dim); }
+  table.facts tbody tr:last-child td { border-bottom: 0; }
+  table.facts tbody tr { background: var(--surface); }
+  table.facts strong { color: var(--text); }
+  table.facts td:first-child { font-weight: 600; color: var(--text); width: 38%; }
+  .y { color: var(--green); font-weight: 700; }
+  .scroll-x { overflow-x: auto; }
+
+  .archi { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin: 16px 0; text-align: center; overflow-x: auto; }
+  .archi svg { max-width: 100%; height: auto; }
+  .archi .caption { color: var(--dim); font-size: 13px; margin-top: 8px; }
+
+  .callout { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin: 14px 0; color: var(--dim); font-size: 14.5px; }
+  .callout strong { color: var(--text); }
+
+  .cta-box { margin-top: 64px; background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(59,130,246,0.06)); border: 1px solid var(--border); border-radius: 16px; padding: 32px; text-align: center; }
+  .cta-box h2 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+  .cta-box p { color: var(--dim); font-size: 14.5px; margin-bottom: 18px; }
+  .btn { display: inline-block; padding: 12px 28px; border-radius: 50px; font-weight: 700; font-size: 15px; transition: transform 0.15s, box-shadow 0.15s, color 0.15s; }
+  .btn-primary { background: var(--orange); color: #000; }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(249,115,22,0.35); color: #fff; }
+
+  footer { border-top: 1px solid var(--border); padding: 32px 0; color: var(--dim); font-size: 13px; }
+  footer .container { max-width: 1180px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  footer .links a { color: var(--dim); margin-left: 24px; }
+  footer .links a:hover { color: var(--orange); }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 30px; }
+    section.kap > h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="/" aria-label="Startseite">
+      <svg viewBox="0 0 200 40" width="140" height="28">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#3b82f6"/>
+            <stop offset="100%" stop-color="#f97316"/>
+          </linearGradient>
+        </defs>
+        <circle cx="14" cy="20" r="5" fill="url(#lg)"/>
+        <circle cx="30" cy="10" r="3.5" fill="#3b82f6" opacity="0.7"/>
+        <circle cx="30" cy="30" r="3.5" fill="#f97316" opacity="0.7"/>
+        <text x="42" y="28" font-family="-apple-system, sans-serif" font-size="22" font-weight="300" fill="#e4e7ef" letter-spacing="-0.5">anywork</text>
+        <text x="130" y="28" font-family="-apple-system, sans-serif" font-size="22" font-weight="700" fill="#f97316" letter-spacing="1">NG</text>
+      </svg>
+    </a>
+    <a href="/" class="back">← Zurück zur Startseite</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1>Sicherheit &amp; <strong>DSGVO</strong>.</h1>
+    <p class="lead">Eine kompakte Übersicht der Sicherheits- und Datenschutz-Eigenschaften — bewusst <strong>nicht-technisch</strong>, für IT-Verantwortliche, Geschäftsführung und Datenschutz-Beauftragte geschrieben. Eine technische Variante mit Implementierungsdetails ist auf Anfrage verfügbar.</p>
+
+    <nav class="toc" aria-label="Inhaltsverzeichnis">
+      <h2>Inhalt</h2>
+      <ol>
+        <li><a href="#architektur">Architektur in einem Satz</a></li>
+        <li><a href="#verschluesselung">Verschlüsselung der Datenübertragung</a></li>
+        <li><a href="#anmeldung">Anmeldung &amp; Identitätsprüfung</a></li>
+        <li><a href="#2fa">Zwei-Faktor-Authentifizierung</a></li>
+        <li><a href="#agent">Sicherheit des Vermittlungs-Agents</a></li>
+        <li><a href="#sitzungen">Verbindungs-Sitzungen</a></li>
+        <li><a href="#mandanten">Trennung zwischen Kundenorganisationen</a></li>
+        <li><a href="#audit">Audit-Protokoll</a></li>
+        <li><a href="#atrest">Verschlüsselung gespeicherter Daten</a></li>
+        <li><a href="#schutz">Was die Plattform schützt — und was nicht</a></li>
+        <li><a href="#verantwortung">Geteilte Verantwortung</a></li>
+        <li><a href="#dsgvo">Datenschutz &amp; DSGVO</a></li>
+      </ol>
+    </nav>
+
+    <section class="kap" id="architektur">
+      <h2><span class="num">01</span>Architektur in einem Satz</h2>
+      <blockquote>Ein Browser im Internet spricht über eine TLS-verschlüsselte Verbindung mit der Plattform-Cloud, die wiederum eine dauerhafte, verschlüsselte Verbindung zum Vermittlungs-Agent im Kundennetz hält. Der Agent leitet die Daten weiter zum eigentlichen Zielsystem (Windows- oder Linux-Arbeitsplatz), das im Kundennetz steht.</blockquote>
+      <p>Niemals besteht eine direkte Verbindung aus dem Internet zum Zielsystem. Jede Sitzung wird ausdrücklich autorisiert und protokolliert.</p>
+
+      <div class="archi">
+        <svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architektur-Diagramm: Browser, Cloud, Agent, Zielsystem mit drei verschlüsselten Abschnitten">
+          <defs>
+            <linearGradient id="grad-a" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#3b82f6"/>
+              <stop offset="100%" stop-color="#f97316"/>
+            </linearGradient>
+          </defs>
+          <!-- Boxes -->
+          <g font-family="-apple-system, sans-serif">
+            <rect x="20" y="60" width="140" height="80" rx="12" fill="#1a1d27" stroke="#2a2e3f" stroke-width="1.5"/>
+            <text x="90" y="90" text-anchor="middle" font-size="14" font-weight="600" fill="#e4e7ef">Browser</text>
+            <text x="90" y="110" text-anchor="middle" font-size="11" fill="#8b8fa3">PC, Tablet, Phone</text>
+            <text x="90" y="124" text-anchor="middle" font-size="11" fill="#8b8fa3">im Internet</text>
+
+            <rect x="220" y="60" width="140" height="80" rx="12" fill="#1a1d27" stroke="#2a2e3f" stroke-width="1.5"/>
+            <text x="290" y="90" text-anchor="middle" font-size="14" font-weight="600" fill="#e4e7ef">Plattform-Cloud</text>
+            <text x="290" y="110" text-anchor="middle" font-size="11" fill="#8b8fa3">EU-Rechenzentrum</text>
+            <text x="290" y="124" text-anchor="middle" font-size="11" fill="#f97316">anywork NG</text>
+
+            <rect x="420" y="60" width="140" height="80" rx="12" fill="#1a1d27" stroke="#2a2e3f" stroke-width="1.5"/>
+            <text x="490" y="90" text-anchor="middle" font-size="14" font-weight="600" fill="#e4e7ef">Vermittlungs-Agent</text>
+            <text x="490" y="110" text-anchor="middle" font-size="11" fill="#8b8fa3">im Kundennetz</text>
+            <text x="490" y="124" text-anchor="middle" font-size="11" fill="#8b8fa3">(Windows-Host)</text>
+
+            <rect x="620" y="60" width="120" height="80" rx="12" fill="#1a1d27" stroke="#2a2e3f" stroke-width="1.5"/>
+            <text x="680" y="90" text-anchor="middle" font-size="14" font-weight="600" fill="#e4e7ef">Zielsystem</text>
+            <text x="680" y="110" text-anchor="middle" font-size="11" fill="#8b8fa3">Windows / Linux</text>
+            <text x="680" y="124" text-anchor="middle" font-size="11" fill="#8b8fa3">im LAN</text>
+
+            <!-- Arrows -->
+            <line x1="160" y1="100" x2="220" y2="100" stroke="url(#grad-a)" stroke-width="2.5"/>
+            <polygon points="220,100 213,96 213,104" fill="#f97316"/>
+            <text x="190" y="50" text-anchor="middle" font-size="11" font-weight="600" fill="#22c55e">TLS</text>
+
+            <line x1="360" y1="100" x2="420" y2="100" stroke="url(#grad-a)" stroke-width="2.5"/>
+            <polygon points="420,100 413,96 413,104" fill="#f97316"/>
+            <text x="390" y="50" text-anchor="middle" font-size="11" font-weight="600" fill="#22c55e">WSS + Schlüssel</text>
+
+            <line x1="560" y1="100" x2="620" y2="100" stroke="url(#grad-a)" stroke-width="2.5"/>
+            <polygon points="620,100 613,96 613,104" fill="#f97316"/>
+            <text x="590" y="50" text-anchor="middle" font-size="11" font-weight="600" fill="#22c55e">RDP / VNC</text>
+
+            <text x="380" y="180" text-anchor="middle" font-size="12" fill="#8b8fa3" font-style="italic">drei separat verschlüsselte Abschnitte — keine direkte Internet-Verbindung zum Zielsystem</text>
+          </g>
+        </svg>
+        <div class="caption">Architektur-Übersicht: Browser → Cloud → Agent → Zielsystem.</div>
+      </div>
+    </section>
+
+    <section class="kap" id="verschluesselung">
+      <h2><span class="num">02</span>Verschlüsselung der Datenübertragung</h2>
+
+      <h3>Browser ↔ Plattform-Cloud</h3>
+      <p>Die Verbindung wird mit <strong>TLS</strong> (Transport Layer Security, derselbe Standard wie bei Online-Banking) in einer aktuellen Version verschlüsselt. Die Zertifikate stammen von einer öffentlichen, anerkannten Zertifizierungsstelle. Browser werden über den Sicherheits-Header <strong>HSTS</strong> angewiesen, niemals auf eine unverschlüsselte Verbindung zurückzufallen.</p>
+
+      <h3>Plattform-Cloud ↔ Vermittlungs-Agent</h3>
+      <p>Die Verbindung läuft über ein verschlüsseltes WebSocket-Protokoll (<code>wss://</code>). Jeder Agent authentifiziert sich gegenüber der Cloud mit einem <strong>eigenen kryptografischen Schlüssel</strong> — kompromittiert ein Angreifer einen Agent, betrifft das nur diesen einen, nicht die anderen.</p>
+
+      <h3>Agent ↔ Zielsystem</h3>
+      <p>Hier hängt das Schutzniveau am eingesetzten Zielsystem-Protokoll:</p>
+      <ul>
+        <li><strong>RDP</strong> (Microsoft Remote Desktop) bringt von Haus aus moderne Verschlüsselung mit (Network Level Authentication, CredSSP). Die Plattform empfiehlt und nutzt diese.</li>
+        <li><strong>VNC</strong> ist in seiner Standardform unverschlüsselt. Für VNC-Verbindungen gilt deshalb die Vorgabe, dass <strong>Agent und Zielsystem im selben Vertrauensnetz liegen</strong> (gleiches LAN/VLAN, oder eine Netzwerk-Verschlüsselung dazwischen). Diese Verantwortung liegt beim Operator des Kundennetzes.</li>
+      </ul>
+    </section>
+
+    <section class="kap" id="anmeldung">
+      <h2><span class="num">03</span>Anmeldung &amp; Identitätsprüfung</h2>
+      <ul>
+        <li>Anmeldung mit <strong>E-Mail und Passwort</strong>. Passwörter werden mit dem aktuellen, NIST-empfohlenen Verfahren <strong>Argon2id</strong> verarbeitet — die Plattform speichert <strong>niemals</strong> ein Passwort im Klartext oder reversibel verschlüsselt.</li>
+        <li><strong>Account-Sperre nach mehreren Fehlversuchen</strong> zur Abwehr von Brute-Force-Angriffen.</li>
+        <li><strong>IP-basiertes Rate-Limit</strong> auf den Anmelde-, Zwei-Faktor- und Token-Erneuerungs-Endpunkten.</li>
+        <li>Nach erfolgreichem Login erhält der Browser <strong>kurzlebige Zugangs-Tokens</strong>, die regelmäßig automatisch erneuert werden. Bei Verdacht auf Replay/Diebstahl werden alle aktuell gültigen Tokens des Kontos sofort invalidiert.</li>
+        <li>Server-seitige Sicherheits-Header (CSP, HSTS, X-Frame-Options) schützen vor Cross-Site-Scripting, Clickjacking und ähnlichen Browser-basierten Angriffen.</li>
+      </ul>
+    </section>
+
+    <section class="kap" id="2fa">
+      <h2><span class="num">04</span>Zwei-Faktor-Authentifizierung</h2>
+      <p>Jeder Account ist pflichtweise mit einem zweiten Faktor geschützt — nach dem ersten Login. Nutzer wählen zwischen zwei gleichwertigen Methoden und können beide parallel führen:</p>
+
+      <h3>Authenticator-App (TOTP)</h3>
+      <ul>
+        <li>Kompatibel mit gängigen Apps wie Google Authenticator, Microsoft Authenticator, Authy oder 1Password.</li>
+        <li>Das geheime Stück, das beim Einrichten erzeugt wird, wird <strong>verschlüsselt in der Datenbank</strong> abgelegt (siehe Kapitel <a href="#atrest">09</a>). Selbst bei Datenbankzugriff lässt es sich ohne den separaten Schlüssel nicht entziffern.</li>
+      </ul>
+
+      <h3>Sicherheitsschlüssel &amp; Passkeys (WebAuthn / FIDO2)</h3>
+      <ul>
+        <li>Unterstützt sowohl synchronisierte <strong>Passkeys</strong> (Touch ID, Face ID, Windows Hello, iCloud-Schlüsselbund, Google-Passwort-Manager) als auch <strong>Hardware-Sicherheitsschlüssel</strong> (YubiKey, Nitrokey &amp; Co.).</li>
+        <li><strong>Phishing-resistent:</strong> Der Schlüssel signiert nur für die echte Portal-Adresse — moderne Phishing-Werkzeuge, die TOTP-Codes problemlos abfangen und weiterleiten, scheitern hier konstruktiv. Empfohlen für alle Nutzer mit erhöhtem Schutzbedarf.</li>
+        <li>Der <strong>Privatschlüssel</strong> verlässt das Hardware-Modul (Secure-Enclave, TPM oder USB-Token) <strong>niemals</strong>.</li>
+        <li>Beliebig viele Schlüssel pro Konto registrierbar — Empfehlung: <strong>Primärschlüssel + Backup-Schlüssel</strong> an räumlich getrenntem Ort.</li>
+      </ul>
+
+      <h3>Wiederherstellungscodes (universeller Notausgang)</h3>
+      <ul>
+        <li>Bei der <strong>ersten</strong> 2FA-Aktivierung erhält der Nutzer einmalig <strong>10 Wiederherstellungscodes</strong> für den Fall, dass alle Authenticators verloren gehen. Jeder Code ist nur einmal verwendbar.</li>
+        <li>Beim Hinzufügen weiterer Schlüssel werden keine neuen Codes ausgestellt — die ursprüngliche Liste bleibt der Notausgang.</li>
+      </ul>
+
+      <h3>Schutz gegen Missbrauch</h3>
+      <ul>
+        <li>Falsch eingegebene Codes (TOTP, Wiederherstellung oder Sicherheitsschlüssel-Verifikation) führen zu einer zeitweiligen Sperre. TOTP und WebAuthn teilen sich denselben Sperr-Zähler.</li>
+        <li><strong>Last-Factor-Schutz:</strong> Der letzte Faktor lässt sich nicht löschen, wenn dadurch kein zweiter Faktor mehr übrig wäre — die Plattform verhindert das aktiv.</li>
+      </ul>
+    </section>
+
+    <section class="kap" id="agent">
+      <h2><span class="num">05</span>Sicherheit des Vermittlungs-Agents</h2>
+      <p>Der Agent ist die Brücke zwischen Plattform-Cloud und Zielsystemen im Kundennetz. Er wird einmalig bei der Inbetriebnahme registriert:</p>
+      <ul>
+        <li>Erstregistrierung mit einem <strong>einmal verwendbaren Token</strong>, das nach erstem Gebrauch automatisch verbraucht und nach 24 Stunden ohnehin abgelaufen ist.</li>
+        <li>Der Agent erzeugt sein <strong>eigenes Schlüsselpaar lokal</strong> und übermittelt nur den öffentlichen Teil an die Cloud — der private Teil verlässt den Agent-Host nie.</li>
+        <li>Jede einzelne Verbindung des Agents zur Cloud wird mit diesem Schlüssel signiert und kann nicht erneut abgespielt werden.</li>
+      </ul>
+      <div class="callout">
+        <strong>Operator-Hinweis:</strong> Wer auf dem Agent-Host Administratorrechte hat, kann technisch den privaten Schlüssel auslesen — daher gehört der Agent-Host in dieselbe Sicherheitszone wie die Zielsysteme, die er bedient.
+      </div>
+    </section>
+
+    <section class="kap" id="sitzungen">
+      <h2><span class="num">06</span>Verbindungs-Sitzungen</h2>
+      <p>Wenn ein Nutzer auf einen Endpunkt verbindet, geschieht im Hintergrund:</p>
+      <ol style="color: var(--dim); padding-left: 22px; font-size: 15px; margin-bottom: 16px;">
+        <li style="margin-bottom: 4px;">Prüfung, ob der Nutzer für genau diesen Endpunkt freigeschaltet ist.</li>
+        <li style="margin-bottom: 4px;">Erzeugung eines <strong style="color:var(--text)">kurzlebigen Sitzungs-Tokens</strong> (5 Minuten Gültigkeit, einmalig verwendbar, kryptografisch zufällig).</li>
+        <li style="margin-bottom: 4px;">Vermittlung der Verbindung an den entsprechenden Agent.</li>
+        <li>Eintrag im Audit-Log über den Beginn der Sitzung.</li>
+      </ol>
+      <p>Bei Beendigung — egal ob durch Logout, Browser-Tab-Schließen oder Timeout — wird das Sitzungs-Token serverseitig sofort entwertet und das Ende ebenfalls protokolliert.</p>
+    </section>
+
+    <section class="kap" id="mandanten">
+      <h2><span class="num">07</span>Trennung zwischen Kundenorganisationen</h2>
+      <p>Die Plattform ist <strong>mandantenfähig</strong>: mehrere Kundenorganisationen können dieselbe Installation nutzen, sehen aber niemals gegenseitige Daten.</p>
+      <ul>
+        <li>Jede Anfrage wird gegen die Organisations- bzw. Partner-Zuordnung des angemeldeten Nutzers geprüft.</li>
+        <li>Die Datenbank stellt durch <strong>Fremdschlüssel-Beziehungen</strong> sicher, dass kein Datensatz „ohne Eigentümer" existieren kann.</li>
+        <li>Endpunkte, Benutzer, Audit-Einträge und Agents einer Organisation sind außerhalb dieser Organisation prinzipiell unsichtbar.</li>
+        <li>Diese Trennung wird durch <strong>automatisierte Tests bei jedem Software-Build</strong> verifiziert.</li>
+      </ul>
+    </section>
+
+    <section class="kap" id="audit">
+      <h2><span class="num">08</span>Audit-Protokoll</h2>
+      <p>Sicherheitsrelevante Aktionen werden lückenlos protokolliert. Beispiele:</p>
+      <ul>
+        <li>Anmelde-Versuche (erfolgreich / fehlgeschlagen / gesperrt)</li>
+        <li>Aktivierung, Verifikation, Reset und Notfall-Bypass der Zwei-Faktor-Authentifizierung</li>
+        <li>Erstellung, Änderung, Sperre und Löschung von Benutzerkonten</li>
+        <li>Erstellung und Löschung von Endpunkten</li>
+        <li>Beginn und Ende jeder Verbindungs-Sitzung</li>
+        <li>Verdacht auf Token-Replay / Token-Diebstahl</li>
+      </ul>
+      <p>Jeder Eintrag enthält Zeitstempel, Akteur, Ziel, Erfolgsstatus, IP-Adresse und einen kontextbezogenen Detail-Block. Die Aufbewahrungsdauer beträgt <strong>mindestens 365 Tage</strong>. Einträge sind aus Anwendungssicht <strong>schreibgeschützt</strong> — nachträgliches Ändern oder Löschen ist über die Benutzeroberfläche nicht möglich.</p>
+    </section>
+
+    <section class="kap" id="atrest">
+      <h2><span class="num">09</span>Verschlüsselung gespeicherter Daten</h2>
+      <p>Folgende Daten in der Plattform-Datenbank sind <em>zusätzlich</em> zur Festplatten-Verschlüsselung des Hosts auf Anwendungsebene geschützt:</p>
+      <div class="scroll-x">
+        <table class="facts">
+          <thead><tr><th>Daten</th><th>Schutzart</th></tr></thead>
+          <tbody>
+            <tr><td>Passwörter der Nutzer</td><td><strong>Argon2id-Hash</strong> (kein Klartext, irreversibel)</td></tr>
+            <tr><td>TOTP-Geheimnisse</td><td><strong>AES-256-GCM</strong>-Verschlüsselung mit separatem Schlüssel</td></tr>
+            <tr><td>WebAuthn / FIDO2-Schlüssel</td><td>Nur <strong>öffentliche</strong> Schlüssel werden gespeichert — der private Teil bleibt im Hardware-Modul</td></tr>
+            <tr><td>Wiederherstellungscodes</td><td><strong>SHA-256-Hash</strong> mit individuellem Salt; Klartext nur einmalig dem Nutzer angezeigt</td></tr>
+            <tr><td>SMTP-Zugangsdaten (für E-Mail-Versand)</td><td><strong>AES-256-GCM</strong>-Verschlüsselung</td></tr>
+            <tr><td>Server-seitige Sitzungs-Token</td><td><strong>SHA-256-Hash</strong></td></tr>
+            <tr><td>Agent-Geheimnisse</td><td><strong>Argon2id-Hash</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Die symmetrischen Verschlüsselungsschlüssel werden vom Plattformbetreiber getrennt von der Datenbank verwaltet. Ein reiner Datenbank-Diebstahl reicht <strong>nicht</strong> aus, um z. B. TOTP-Geheimnisse zu rekonstruieren.</p>
+    </section>
+
+    <section class="kap" id="schutz">
+      <h2><span class="num">10</span>Was die Plattform schützt — und was nicht</h2>
+
+      <h3>Wovor die Plattform schützt</h3>
+      <div class="scroll-x">
+        <table class="facts">
+          <thead><tr><th>Bedrohung</th><th>Schutzmaßnahme</th></tr></thead>
+          <tbody>
+            <tr><td>Mitlesen der Browser-Verbindung</td><td>TLS 1.2+ mit aktuellen Cipher-Suiten, HSTS</td></tr>
+            <tr><td>Mitlesen der Cloud–Agent-Verbindung</td><td>Verschlüsseltes WebSocket mit Pro-Agent-Schlüssel</td></tr>
+            <tr><td>Brute-Force auf Login</td><td>Account-Sperre + IP-Rate-Limit</td></tr>
+            <tr><td>Brute-Force auf Zwei-Faktor-Code</td><td>Gemeinsamer Sperr-Zähler für TOTP und Sicherheitsschlüssel</td></tr>
+            <tr><td>Phishing der Anmeldedaten (Adversary-in-the-Middle)</td><td>Sicherheitsschlüssel / Passkey signiert nur für die echte Portal-Adresse</td></tr>
+            <tr><td>Diebstahl / Replay von Zugangs-Tokens</td><td>Kurzlebige Tokens, automatische Erneuerung, Replay-Erkennung</td></tr>
+            <tr><td>Querzugriff zwischen Kundenorganisationen</td><td>Zwingender Mandanten-Filter in jeder Anfrage</td></tr>
+            <tr><td>Manipulation der Web-Oberfläche</td><td>Strikte Sicherheits-Header (CSP, Frame-Options, MIME-Schutz)</td></tr>
+            <tr><td>SQL-Injection</td><td>Ausschließlich parametrierte Datenbank-Anfragen</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Was außerhalb des Schutzes liegt</h3>
+      <ul>
+        <li><strong>Endgerät des Endnutzers:</strong> Wenn der Browser oder das Betriebssystem kompromittiert ist, kann ein Angreifer Sitzungen im Namen des Nutzers initiieren. Die Plattform erkennt das nur indirekt (anomale IP-Wechsel im Audit-Log).</li>
+        <li><strong>Sicherheit des Zielsystems:</strong> RDP- bzw. VNC-Zielsysteme müssen selbst aktuell gepatcht und sicher konfiguriert sein (Network Level Authentication, starke Passwörter).</li>
+        <li><strong>Sicherheit des Agent-Hosts:</strong> Wer auf dem Agent-Host Administrator ist, kann den Schlüssel auslesen.</li>
+        <li><strong>VNC-Wire-Verschlüsselung:</strong> VNC bietet protokoll-bedingt keine zuverlässige Wire-Verschlüsselung — durch die Trust-Boundary-Pflicht des Operators (gleiches LAN/VLAN) abzudecken.</li>
+      </ul>
+    </section>
+
+    <section class="kap" id="verantwortung">
+      <h2><span class="num">11</span>Geteilte Verantwortung</h2>
+      <div class="scroll-x">
+        <table class="facts">
+          <thead><tr><th>Aufgabe</th><th>Plattformbetreiber</th><th>Partner</th><th>Endkunde</th></tr></thead>
+          <tbody>
+            <tr><td>TLS-Zertifikate, HSTS, sichere Header</td><td><span class="y">✓</span></td><td>—</td><td>—</td></tr>
+            <tr><td>Account-Sperre, Mandanten-Trennung</td><td><span class="y">✓</span></td><td>—</td><td>—</td></tr>
+            <tr><td>Zwei-Faktor erzwingen</td><td><span class="y">✓</span></td><td>—</td><td>—</td></tr>
+            <tr><td>Audit-Protokoll</td><td><span class="y">✓</span></td><td>—</td><td>—</td></tr>
+            <tr><td>EU-Hosting, DB-Backups</td><td><span class="y">✓</span></td><td>—</td><td>—</td></tr>
+            <tr><td>Anlage von Nutzerkonten</td><td>—</td><td><span class="y">✓</span></td><td>—</td></tr>
+            <tr><td>Installation des Agents</td><td>—</td><td>unterstützt</td><td><span class="y">✓</span></td></tr>
+            <tr><td>Patches auf dem Agent-Host</td><td>—</td><td>—</td><td><span class="y">✓</span></td></tr>
+            <tr><td>Härtung der Zielsysteme</td><td>—</td><td>—</td><td><span class="y">✓</span></td></tr>
+            <tr><td>Sicherheit der Endgeräte (Browser, OS)</td><td>—</td><td>—</td><td><span class="y">✓</span></td></tr>
+            <tr><td>Starke Passwörter, Zweiter Faktor</td><td>—</td><td>—</td><td><span class="y">✓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="kap" id="dsgvo">
+      <h2><span class="num">12</span>Datenschutz &amp; DSGVO</h2>
+
+      <h3>Verarbeitungsverhältnis</h3>
+      <p>Die Plattform wird typischerweise im <strong>Auftragsverarbeitungs-Verhältnis nach Art. 28 DSGVO</strong> genutzt — der Plattformbetreiber ist Auftragsverarbeiter, der Endkunde Verantwortlicher. Ein entsprechender AV-Vertrag wird beim Vertragsabschluss bereitgestellt und ist auf Anfrage vorab verfügbar.</p>
+
+      <h3>Welche personenbezogenen Daten verarbeitet werden</h3>
+      <div class="scroll-x">
+        <table class="facts">
+          <thead><tr><th>Kategorie</th><th>Beispiele</th><th>Zweck</th></tr></thead>
+          <tbody>
+            <tr><td>Identitätsdaten</td><td>E-Mail, Name, Rolle</td><td>Benutzerverwaltung</td></tr>
+            <tr><td>Authentifizierungsdaten</td><td>Passwort-Hash, verschlüsseltes TOTP-Geheimnis, öffentliche Schlüssel registrierter Passkeys</td><td>Anmeldung</td></tr>
+            <tr><td>Verbindungsdaten</td><td>Zeitstempel, Ziel-System, IP-Adresse, Erfolgsstatus</td><td>Audit-Pflicht, Missbrauchserkennung</td></tr>
+            <tr><td>Konfigurationsdaten</td><td>zugeordnete Endpunkte, Berechtigungen</td><td>Funktion der Plattform</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout"><strong>Inhalte der eigentlichen Remote-Sitzungen — Bildschirminhalte, Tastatureingaben, Dateiübertragungen — werden weder verarbeitet noch gespeichert.</strong> Die Plattform vermittelt nur den verschlüsselten Datenstrom.</div>
+
+      <h3>Aufbewahrungsfristen</h3>
+      <ul>
+        <li><strong>Audit-Protokoll:</strong> mindestens 365 Tage; danach Löschung je nach Vorgabe des Auftraggebers.</li>
+        <li><strong>Sitzungs-Token:</strong> sofort nach Sitzungsende ungültig; Audit-Eintrag bleibt im Rahmen der Audit-Aufbewahrung.</li>
+        <li><strong>Benutzerkonten:</strong> bestehen, solange das Nutzungsverhältnis besteht; physische Löschung auf Anweisung des Verantwortlichen.</li>
+      </ul>
+
+      <h3>Technische und organisatorische Maßnahmen (Art. 32 DSGVO)</h3>
+      <div class="scroll-x">
+        <table class="facts">
+          <thead><tr><th>Anforderung Art. 32</th><th>Umsetzung in der Plattform</th></tr></thead>
+          <tbody>
+            <tr><td>Pseudonymisierung &amp; Verschlüsselung</td><td>TLS für Übertragung, AES-256-GCM für sensible Daten im Ruhezustand, irreversible Hashes für Passwörter</td></tr>
+            <tr><td>Vertraulichkeit</td><td>Strikte Mandanten-Trennung, Rollen- und Berechtigungsmodell, 2FA-Pflicht</td></tr>
+            <tr><td>Integrität</td><td>Revisionssicheres Audit-Protokoll, kryptografische Bindung der Agent-Verbindungen, Token-Replay-Erkennung</td></tr>
+            <tr><td>Verfügbarkeit</td><td>Gehärtete Cloud-Komponenten, Reverse-Proxy-Schutz, automatische Brute-Force-Sperren</td></tr>
+            <tr><td>Belastbarkeit</td><td>Auto-Restart der Dienste, regelmäßige Backups</td></tr>
+            <tr><td>Wiederherstellbarkeit</td><td>Backup-Strategie mit dokumentierter Wiederanlauf-Prozedur</td></tr>
+            <tr><td>Regelmäßige Überprüfung</td><td>Code-Reviews, automatisierte Sicherheits-Tests bei jedem Build</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Meldung von Datenschutzvorfällen</h3>
+      <p>Im Falle eines Sicherheitsvorfalls mit potenziellem Personenbezug informiert der Plattformbetreiber den Verantwortlichen unverzüglich, sodass dieser seine Meldepflichten nach Art. 33/34 DSGVO erfüllen kann.</p>
+
+      <h3>Sub-Auftragsverarbeiter</h3>
+      <p>Die Plattform wird in einem Rechenzentrum innerhalb der EU betrieben. Die genaue Liste der Sub-Auftragsverarbeiter (Hosting-Dienstleister) wird im AV-Vertrag aktuell gehalten und dem Verantwortlichen bei Änderungen mitgeteilt.</p>
+    </section>
+
+    <div class="cta-box">
+      <h2>Whitepaper oder AV-Vertrag anfragen?</h2>
+      <p>Schreiben Sie uns — wir senden Ihnen die technische Whitepaper-Variante oder eine AV-Vertragsvorlage auf Anfrage zu.</p>
+      <a href="/kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <span>© 2026 EberhardtConsulting</span>
+    <span class="links"><a href="/">Startseite</a><a href="/faq.html">FAQ</a><a href="/vergleich.html">Einordnung</a><a href="/impressum.html">Impressum</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

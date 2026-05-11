@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Häufige Fragen — anywork NG | FAQ zu Sicherheit, DSGVO, Onboarding</title>
+<meta name="description" content="Antworten auf häufige Fragen zu anywork NG — Sicherheit, DSGVO, Zwei-Faktor, Onboarding, Preis, Datenschutz. Für IT-Verantwortliche, Geschäftsführung und Anwender.">
+<meta name="theme-color" content="#0f1117">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.anywork.ing/faq.html">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<meta property="og:title" content="Häufige Fragen — anywork NG">
+<meta property="og:description" content="Antworten zu Sicherheit, DSGVO, Zwei-Faktor, Onboarding und Preis.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.anywork.ing/faq.html">
+<meta property="og:image" content="https://www.anywork.ing/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="anywork NG">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.anywork.ing/assets/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.anywork.ing/faq.html#faq",
+  "url": "https://www.anywork.ing/faq.html",
+  "inLanguage": "de",
+  "isPartOf": {"@type":"WebSite","url":"https://www.anywork.ing/","name":"anywork NG"},
+  "mainEntity": [
+    {"@type":"Question","name":"Was ist anywork NG?","acceptedAnswer":{"@type":"Answer","text":"anywork NG ist eine Browser-basierte Plattform für sicheren Fernzugriff auf Windows- und Linux-Arbeitsplätze. Anwender greifen ohne lokalen Client, ohne VPN und ohne offene Ports am Zielsystem aus dem Browser auf ihren Arbeitsplatz zu — vom PC, Laptop, Tablet oder Smartphone."}},
+    {"@type":"Question","name":"Für welche Unternehmensgröße eignet sich anywork NG?","acceptedAnswer":{"@type":"Answer","text":"Vom Soloselbstständigen mit einem einzelnen Bürorechner über die Anwaltskanzlei mit fünf Arbeitsplätzen bis hin zur mittelständischen IT-Abteilung mit ca. 500 Mitarbeitenden. Schwerpunkt im DACH-Markt."}},
+    {"@type":"Question","name":"Brauche ich für anywork NG einen VPN?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der Zugriff erfolgt aus dem Browser über die anywork-NG-Plattform; das Zielsystem bleibt im LAN und benötigt keine offenen Ports nach außen. Es ist keine VPN-Infrastruktur notwendig."}},
+    {"@type":"Question","name":"Wo werden die Daten gehostet?","acceptedAnswer":{"@type":"Answer","text":"Ausschließlich in einem Rechenzentrum innerhalb der Europäischen Union. Sub-Auftragsverarbeiter sind im AV-Vertrag nach Art. 28 DSGVO dokumentiert."}},
+    {"@type":"Question","name":"Welche personenbezogenen Daten werden verarbeitet?","acceptedAnswer":{"@type":"Answer","text":"Identitätsdaten (E-Mail, Name, Rolle), Authentifizierungsdaten (Passwort-Hash, verschlüsseltes TOTP-Geheimnis, öffentliche Schlüssel registrierter Sicherheitsschlüssel/Passkeys), Verbindungsdaten (Zeitstempel, Ziel-System, IP-Adresse) und Konfigurationsdaten. Bildschirminhalte, Tastatureingaben und Dateiübertragungen während der Sitzung werden weder verarbeitet noch gespeichert."}},
+    {"@type":"Question","name":"Speichert anywork NG Bildschirminhalte oder Tastatureingaben?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Plattform vermittelt nur Verbindungen, sie speichert keine Sitzungsinhalte — weder Bildschirminhalte noch Tastatureingaben noch Sitzungsaufzeichnungen. Diese bewusste Architektur-Entscheidung ist im Sicherheits-Whitepaper dokumentiert."}},
+    {"@type":"Question","name":"Welche Verschlüsselung wird eingesetzt?","acceptedAnswer":{"@type":"Answer","text":"TLS 1.2 oder neuer auf allen Transportwegen, AES-256-GCM für Secrets at rest, Argon2id für Passwort-Hashing. Vier separat verschlüsselte Abschnitte zwischen Browser und Zielsystem."}},
+    {"@type":"Question","name":"Welche Zwei-Faktor-Verfahren werden unterstützt?","acceptedAnswer":{"@type":"Answer","text":"TOTP-Authenticator-Apps (z. B. Google Authenticator, Microsoft Authenticator, Authy, 1Password) und WebAuthn/FIDO2 (Passkeys, Touch ID, Face ID, Windows Hello, sowie Hardware-Sicherheitsschlüssel wie YubiKey oder Nitrokey). Zusätzlich werden bei der ersten Einrichtung zehn Wiederherstellungscodes ausgegeben."}},
+    {"@type":"Question","name":"Was passiert, wenn ein Anwender sein Smartphone verliert?","acceptedAnswer":{"@type":"Answer","text":"Mit den bei der ersten Einrichtung ausgegebenen zehn Wiederherstellungscodes kann sich der Anwender einmalig einloggen und einen neuen Authenticator einrichten. Jeder Code ist nur einmal verwendbar. Sind alle Codes verbraucht oder ebenfalls verloren, setzt ein Administrator die Zwei-Faktor-Authentifizierung zurück."}},
+    {"@type":"Question","name":"Wie sicher ist WebAuthn/FIDO2 gegenüber TOTP?","acceptedAnswer":{"@type":"Answer","text":"Sicherheitsschlüssel und Passkeys (WebAuthn/FIDO2) sind phishing-resistent: Der Authenticator signiert nur für die echte Portal-Adresse — moderne Phishing-Werkzeuge, die TOTP-Codes problemlos abfangen und weiterleiten können, scheitern hier konstruktiv. TOTP bleibt eine valide Methode, ist aber nicht phishing-resistent."}},
+    {"@type":"Question","name":"Wie wird die Mandanten-Trennung garantiert?","acceptedAnswer":{"@type":"Answer","text":"Auf Datenbank-Ebene durch Fremdschlüssel-Constraints, nicht nur durch Anwendungs-Logik. Jede Anfrage wird gegen die Organisations- bzw. Partner-Zuordnung des angemeldeten Nutzers geprüft. Endpunkte, Benutzer und Audit-Einträge einer Organisation sind außerhalb dieser Organisation unsichtbar. Die Trennung wird durch automatisierte Tests bei jedem Build verifiziert."}},
+    {"@type":"Question","name":"Wie lange werden Audit-Logs aufbewahrt?","acceptedAnswer":{"@type":"Answer","text":"Mindestens 365 Tage. Jeder Login, jede Sitzung und jede Admin-Aktion wird mit Zeitstempel, Akteur, Ziel, Erfolgsstatus und IP-Adresse protokolliert. Einträge sind aus Anwendungssicht schreibgeschützt — nachträgliches Ändern oder Löschen ist über die Benutzeroberfläche nicht möglich."}},
+    {"@type":"Question","name":"Welche Browser werden unterstützt?","acceptedAnswer":{"@type":"Answer","text":"Aktuelle Versionen von Chromium-basierten Browsern (Chrome, Edge, Vivaldi, Brave), Mozilla Firefox und Apple Safari — auf Desktop, Tablet und Smartphone (Windows, macOS, Linux, iOS, Android)."}},
+    {"@type":"Question","name":"Funktioniert anywork NG auf iPad oder Android-Tablet?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wo ein aktueller Browser läuft, läuft anywork NG — auch auf einem geliehenen Tablet beim Kunden oder einem privaten Smartphone im Hotel."}},
+    {"@type":"Question","name":"Kann ich anywork NG selbst hosten?","acceptedAnswer":{"@type":"Answer","text":"Nein. anywork NG wird als SaaS angeboten — wir betreiben und warten die Plattform in einem EU-Rechenzentrum. Sie pflegen weder Server noch Container, sondern erhalten einen Zugang."}},
+    {"@type":"Question","name":"Was muss bei mir vor Ort installiert werden?","acceptedAnswer":{"@type":"Answer","text":"Nur ein kleiner Vermittlungs-Agent auf einem bestehenden Windows-Host in Ihrem Netz. Der Agent verbindet sich ausgehend zur Cloud — Firewall-Regeln müssen nur ausgehenden HTTPS-Verkehr erlauben, keine eingehenden Ports."}},
+    {"@type":"Question","name":"Wie funktioniert das Onboarding?","acceptedAnswer":{"@type":"Answer","text":"In drei Schritten: Onboarding-Call mit uns (Konto-Einrichtung, Branding, Anwender-Liste), einmalige Installation des Vermittlungs-Agents (durch Ihr IT-Team oder unser Onboarding-Team), Einladung der Anwender per Login-Link. Typische Dauer vom Erstkontakt bis zur ersten Mitarbeiter-Sitzung: wenige Tage."}},
+    {"@type":"Question","name":"Können Anwender Dateien zwischen Browser und Zielsystem austauschen?","acceptedAnswer":{"@type":"Answer","text":"Ja, optional. Beim Download-Dialog für die lokale RDP-Client-Variante können Anwender Zwischenablage und lokale Laufwerke aktivieren. Der Plattform-Administrator kann diese Option global einschränken."}},
+    {"@type":"Question","name":"Wird die Sitzung aufgezeichnet?","acceptedAnswer":{"@type":"Answer","text":"Nein. Eine Aufzeichnung von Bildschirminhalten findet nicht statt — bewusst nicht. Protokolliert wird ausschließlich Metadaten der Sitzung (Wer, Wann, Welches Zielsystem, Erfolgsstatus, Dauer)."}},
+    {"@type":"Question","name":"Wer haftet bei einem Datenschutzvorfall?","acceptedAnswer":{"@type":"Answer","text":"Der Endkunde ist Verantwortlicher im Sinne der DSGVO, der Plattformbetreiber ist Auftragsverarbeiter nach Art. 28 DSGVO. Bei einem Sicherheitsvorfall mit potenziellem Personenbezug informiert der Plattformbetreiber den Verantwortlichen unverzüglich, sodass dieser seine Meldepflichten nach Art. 33/34 DSGVO erfüllen kann."}},
+    {"@type":"Question","name":"Was ist im AV-Vertrag enthalten?","acceptedAnswer":{"@type":"Answer","text":"Die übliche Struktur nach Art. 28 DSGVO: Gegenstand und Dauer der Verarbeitung, Art und Zweck, Datenkategorien, Pflichten des Auftragsverarbeiters, TOMs nach Art. 32 DSGVO, Liste der Sub-Auftragsverarbeiter, Unterstützung bei Betroffenenrechten, Meldepflichten. Der AV-Vertrag wird beim Vertragsabschluss bereitgestellt und ist auf Anfrage vorab verfügbar."}},
+    {"@type":"Question","name":"Was kostet anywork NG?","acceptedAnswer":{"@type":"Answer","text":"anywork NG wird pro Nutzer pro Monat abgerechnet, monatlich kündbar. Eine konkrete Preisliste erhalten Sie auf Anfrage über das Kontaktformular — die Spannweite richtet sich nach Anzahl Nutzer und gewünschten Optionen (z. B. Branding)."}},
+    {"@type":"Question","name":"Gibt es eine Mindestlaufzeit?","acceptedAnswer":{"@type":"Answer","text":"Nein. Verträge sind monatlich kündbar. Wir vertrauen darauf, dass die Plattform sich täglich neu beweist."}},
+    {"@type":"Question","name":"Welche Logs werden geschrieben — und welche bewusst nicht?","acceptedAnswer":{"@type":"Answer","text":"Geschrieben werden: Anmelde-Versuche, Zwei-Faktor-Aktivierung/-Reset, Benutzer-/Endpunkt-Verwaltung, Beginn und Ende jeder Sitzung, Verdacht auf Token-Replay. Nicht geschrieben werden: Inhalte der Remote-Sitzung (Bildschirm, Tastatur, Maus, Dateiübertragungen)."}},
+    {"@type":"Question","name":"Wie unterscheidet sich anywork NG von klassischen Remote-Zugriffs-Lösungen?","acceptedAnswer":{"@type":"Answer","text":"Anwender greifen aus dem Browser auf ihren Arbeitsplatz zu — ohne lokalen Client, ohne VPN, ohne offene Ports am Zielsystem. Die Plattform ist mandantenfähig per Design, hostet ausschließlich in der EU, bietet phishing-resistente Zwei-Faktor-Verfahren standardmäßig und wird als SaaS betrieben — Kunden pflegen keine eigene Infrastruktur."}},
+    {"@type":"Question","name":"Können wir die Plattform mit unserem eigenen Branding ausstatten?","acceptedAnswer":{"@type":"Answer","text":"Ja. White-Label-Branding pro Partner ist möglich — relevant für IT-Dienstleister, die anywork NG ihren Endkunden anbieten. Details über den Partner-Vertriebskanal."}}
+  ]
+}
+</script>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface-2: #232735; --border: #2a2e3f;
+    --text: #e4e7ef; --dim: #8b8fa3; --orange: #f97316; --blue: #3b82f6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--orange); }
+  .container { max-width: 840px; margin: 0 auto; padding: 0 24px; }
+
+  header { border-bottom: 1px solid var(--border); padding: 18px 0; }
+  header .container { max-width: 1180px; display: flex; align-items: center; justify-content: space-between; }
+  .back { color: var(--dim); font-size: 14px; }
+  .back:hover { color: var(--text); }
+
+  main { padding: 64px 0 80px; }
+  h1 { font-size: 40px; font-weight: 200; margin-bottom: 12px; letter-spacing: -1px; }
+  h1 strong { font-weight: 700; color: var(--orange); }
+  .lead { color: var(--dim); font-size: 17px; margin-bottom: 40px; max-width: 720px; }
+
+  .faq-section { margin-top: 48px; }
+  .faq-section h2 { font-size: 22px; font-weight: 600; margin-bottom: 18px; padding-bottom: 8px; border-bottom: 1px solid var(--border); letter-spacing: -0.3px; }
+  .faq-section h2 .num { color: var(--orange); font-weight: 700; margin-right: 12px; font-size: 16px; letter-spacing: 2px; }
+
+  details.faq-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    transition: border-color 0.15s;
+  }
+  details.faq-item[open] { border-color: var(--orange); }
+  details.faq-item summary {
+    cursor: pointer;
+    padding: 16px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after {
+    content: '+';
+    color: var(--orange);
+    font-size: 22px;
+    font-weight: 300;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  details.faq-item[open] summary::after { content: '−'; }
+  details.faq-item .a {
+    padding: 0 22px 18px;
+    color: var(--dim);
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+  details.faq-item .a p { margin-bottom: 10px; }
+  details.faq-item .a p:last-child { margin-bottom: 0; }
+  details.faq-item .a strong { color: var(--text); font-weight: 600; }
+
+  .cta-box { margin-top: 64px; background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(59,130,246,0.06)); border: 1px solid var(--border); border-radius: 16px; padding: 32px; text-align: center; }
+  .cta-box h2 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+  .cta-box p { color: var(--dim); font-size: 14.5px; margin-bottom: 18px; }
+  .btn { display: inline-block; padding: 12px 28px; border-radius: 50px; font-weight: 700; font-size: 15px; transition: transform 0.15s, box-shadow 0.15s, color 0.15s; }
+  .btn-primary { background: var(--orange); color: #000; }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(249,115,22,0.35); color: #fff; }
+
+  footer { border-top: 1px solid var(--border); padding: 32px 0; color: var(--dim); font-size: 13px; }
+  footer .container { max-width: 1180px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  footer .links a { color: var(--dim); margin-left: 24px; }
+  footer .links a:hover { color: var(--orange); }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 30px; }
+    .faq-section h2 { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="/" aria-label="Startseite">
+      <svg viewBox="0 0 200 40" width="140" height="28">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#3b82f6"/>
+            <stop offset="100%" stop-color="#f97316"/>
+          </linearGradient>
+        </defs>
+        <circle cx="14" cy="20" r="5" fill="url(#lg)"/>
+        <circle cx="30" cy="10" r="3.5" fill="#3b82f6" opacity="0.7"/>
+        <circle cx="30" cy="30" r="3.5" fill="#f97316" opacity="0.7"/>
+        <text x="42" y="28" font-family="-apple-system, sans-serif" font-size="22" font-weight="300" fill="#e4e7ef" letter-spacing="-0.5">anywork</text>
+        <text x="130" y="28" font-family="-apple-system, sans-serif" font-size="22" font-weight="700" fill="#f97316" letter-spacing="1">NG</text>
+      </svg>
+    </a>
+    <a href="/" class="back">← Zurück zur Startseite</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1>Häufige <strong>Fragen</strong>.</h1>
+    <p class="lead">Antworten auf die Fragen, die uns am häufigsten gestellt werden — geordnet nach Themen. Falls Ihre Frage hier nicht steht, freuen wir uns über eine kurze Nachricht.</p>
+
+    <section class="faq-section">
+      <h2><span class="num">01</span>Allgemeines</h2>
+
+      <details class="faq-item">
+        <summary>Was ist anywork NG?</summary>
+        <div class="a"><p>anywork NG ist eine Browser-basierte Plattform für sicheren Fernzugriff auf Windows- und Linux-Arbeitsplätze. Anwender greifen <strong>ohne lokalen Client, ohne VPN und ohne offene Ports am Zielsystem</strong> aus dem Browser auf ihren Arbeitsplatz zu — vom PC, Laptop, Tablet oder Smartphone.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Für welche Unternehmensgröße eignet sich anywork NG?</summary>
+        <div class="a"><p>Vom <strong>Soloselbstständigen</strong> mit einem einzelnen Bürorechner über die <strong>Anwaltskanzlei mit fünf Arbeitsplätzen</strong> bis hin zur <strong>mittelständischen IT-Abteilung mit ca. 500 Mitarbeitenden</strong>. Schwerpunkt im DACH-Markt.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Welche Browser werden unterstützt?</summary>
+        <div class="a"><p>Aktuelle Versionen von Chromium-basierten Browsern (Chrome, Edge, Vivaldi, Brave), Mozilla Firefox und Apple Safari — auf Desktop, Tablet und Smartphone (Windows, macOS, Linux, iOS, Android).</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Funktioniert anywork NG auf iPad oder Android-Tablet?</summary>
+        <div class="a"><p>Ja. Wo ein aktueller Browser läuft, läuft anywork NG — auch auf einem geliehenen Tablet beim Kunden oder einem privaten Smartphone im Hotel.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Wie unterscheidet sich anywork NG von klassischen Remote-Zugriffs-Lösungen?</summary>
+        <div class="a"><p>Anwender greifen aus dem Browser auf ihren Arbeitsplatz zu — <strong>ohne lokalen Client, ohne VPN, ohne offene Ports am Zielsystem</strong>. Die Plattform ist mandantenfähig per Design, hostet ausschließlich in der EU, bietet phishing-resistente Zwei-Faktor-Verfahren standardmäßig und wird als SaaS betrieben — Kunden pflegen keine eigene Infrastruktur.</p></div>
+      </details>
+    </section>
+
+    <section class="faq-section">
+      <h2><span class="num">02</span>Sicherheit &amp; DSGVO</h2>
+
+      <details class="faq-item">
+        <summary>Brauche ich für anywork NG einen VPN?</summary>
+        <div class="a"><p>Nein. Der Zugriff erfolgt aus dem Browser über die Plattform; das Zielsystem bleibt im LAN und benötigt keine offenen Ports nach außen. Es ist <strong>keine VPN-Infrastruktur notwendig</strong>.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Wo werden die Daten gehostet?</summary>
+        <div class="a"><p>Ausschließlich in einem Rechenzentrum innerhalb der Europäischen Union. Sub-Auftragsverarbeiter sind im AV-Vertrag nach Art. 28 DSGVO dokumentiert.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Welche personenbezogenen Daten werden verarbeitet?</summary>
+        <div class="a">
+          <p>Identitätsdaten (E-Mail, Name, Rolle), Authentifizierungsdaten (Passwort-Hash, verschlüsseltes TOTP-Geheimnis, öffentliche Schlüssel registrierter Sicherheitsschlüssel/Passkeys), Verbindungsdaten (Zeitstempel, Ziel-System, IP-Adresse) und Konfigurationsdaten.</p>
+          <p><strong>Bildschirminhalte, Tastatureingaben und Dateiübertragungen während der Sitzung werden weder verarbeitet noch gespeichert.</strong></p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Speichert anywork NG Bildschirminhalte oder Tastatureingaben?</summary>
+        <div class="a"><p><strong>Nein.</strong> Die Plattform vermittelt nur Verbindungen, sie speichert keine Sitzungsinhalte — weder Bildschirminhalte noch Tastatureingaben noch Sitzungsaufzeichnungen. Diese bewusste Architektur-Entscheidung ist im <a href="/sicherheit.html">Sicherheits-Whitepaper</a> dokumentiert.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Welche Verschlüsselung wird eingesetzt?</summary>
+        <div class="a"><p><strong>TLS 1.2 oder neuer</strong> auf allen Transportwegen, <strong>AES-256-GCM</strong> für Secrets at rest, <strong>Argon2id</strong> für Passwort-Hashing. Vier separat verschlüsselte Abschnitte zwischen Browser und Zielsystem.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Wie wird die Mandanten-Trennung garantiert?</summary>
+        <div class="a"><p>Auf <strong>Datenbank-Ebene durch Fremdschlüssel-Constraints</strong>, nicht nur durch Anwendungs-Logik. Jede Anfrage wird gegen die Organisations- bzw. Partner-Zuordnung des angemeldeten Nutzers geprüft. Endpunkte, Benutzer und Audit-Einträge einer Organisation sind außerhalb dieser Organisation unsichtbar. Die Trennung wird durch automatisierte Tests bei jedem Build verifiziert.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Wie lange werden Audit-Logs aufbewahrt?</summary>
+        <div class="a"><p>Mindestens <strong>365 Tage</strong>. Jeder Login, jede Sitzung und jede Admin-Aktion wird mit Zeitstempel, Akteur, Ziel, Erfolgsstatus und IP-Adresse protokolliert. Einträge sind aus Anwendungssicht schreibgeschützt — nachträgliches Ändern oder Löschen ist über die Benutzeroberfläche nicht möglich.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Welche Logs werden geschrieben — und welche bewusst nicht?</summary>
+        <div class="a">
+          <p><strong>Geschrieben:</strong> Anmelde-Versuche, Zwei-Faktor-Aktivierung/-Reset, Benutzer-/Endpunkt-Verwaltung, Beginn und Ende jeder Sitzung, Verdacht auf Token-Replay.</p>
+          <p><strong>Nicht geschrieben:</strong> Inhalte der Remote-Sitzung (Bildschirm, Tastatur, Maus, Dateiübertragungen).</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Wer haftet bei einem Datenschutzvorfall?</summary>
+        <div class="a"><p>Der Endkunde ist Verantwortlicher im Sinne der DSGVO, der Plattformbetreiber ist Auftragsverarbeiter nach Art. 28 DSGVO. Bei einem Sicherheitsvorfall mit potenziellem Personenbezug informiert der Plattformbetreiber den Verantwortlichen unverzüglich, sodass dieser seine Meldepflichten nach Art. 33/34 DSGVO erfüllen kann.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Was ist im AV-Vertrag enthalten?</summary>
+        <div class="a"><p>Die übliche Struktur nach Art. 28 DSGVO: Gegenstand und Dauer der Verarbeitung, Art und Zweck, Datenkategorien, Pflichten des Auftragsverarbeiters, TOMs nach Art. 32 DSGVO, Liste der Sub-Auftragsverarbeiter, Unterstützung bei Betroffenenrechten, Meldepflichten. Der AV-Vertrag wird beim Vertragsabschluss bereitgestellt und ist auf Anfrage vorab verfügbar.</p></div>
+      </details>
+    </section>
+
+    <section class="faq-section">
+      <h2><span class="num">03</span>Anmeldung &amp; Zwei-Faktor</h2>
+
+      <details class="faq-item">
+        <summary>Welche Zwei-Faktor-Verfahren werden unterstützt?</summary>
+        <div class="a"><p><strong>TOTP-Authenticator-Apps</strong> (z. B. Google Authenticator, Microsoft Authenticator, Authy, 1Password) und <strong>WebAuthn/FIDO2</strong> (Passkeys, Touch ID, Face ID, Windows Hello, sowie Hardware-Sicherheitsschlüssel wie YubiKey oder Nitrokey). Zusätzlich werden bei der ersten Einrichtung <strong>zehn Wiederherstellungscodes</strong> ausgegeben.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Wie sicher ist WebAuthn/FIDO2 gegenüber TOTP?</summary>
+        <div class="a"><p>Sicherheitsschlüssel und Passkeys (WebAuthn/FIDO2) sind <strong>phishing-resistent</strong>: Der Authenticator signiert nur für die echte Portal-Adresse — moderne Phishing-Werkzeuge, die TOTP-Codes problemlos abfangen und weiterleiten können, scheitern hier konstruktiv. TOTP bleibt eine valide Methode, ist aber nicht phishing-resistent.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Was passiert, wenn ein Anwender sein Smartphone verliert?</summary>
+        <div class="a"><p>Mit den <strong>bei der ersten Einrichtung ausgegebenen zehn Wiederherstellungscodes</strong> kann sich der Anwender einmalig einloggen und einen neuen Authenticator einrichten. Jeder Code ist nur einmal verwendbar. Sind alle Codes verbraucht oder ebenfalls verloren, setzt ein Administrator die Zwei-Faktor-Authentifizierung zurück.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Können mehrere Sicherheitsschlüssel pro Konto registriert werden?</summary>
+        <div class="a"><p>Ja, beliebig viele. Empfehlung: <strong>Primärschlüssel + Backup-Schlüssel an räumlich getrenntem Ort</strong>. Die Wiederherstellungscodes bleiben unabhängig davon der universelle Notausgang.</p></div>
+      </details>
+    </section>
+
+    <section class="faq-section">
+      <h2><span class="num">04</span>Funktionsweise &amp; Betrieb</h2>
+
+      <details class="faq-item">
+        <summary>Kann ich anywork NG selbst hosten?</summary>
+        <div class="a"><p>Nein. anywork NG wird als SaaS angeboten — wir betreiben und warten die Plattform in einem EU-Rechenzentrum. Sie pflegen weder Server noch Container, sondern erhalten einen Zugang.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Was muss bei mir vor Ort installiert werden?</summary>
+        <div class="a"><p>Nur ein <strong>kleiner Vermittlungs-Agent</strong> auf einem bestehenden Windows-Host in Ihrem Netz. Der Agent verbindet sich <strong>ausgehend</strong> zur Cloud — Firewall-Regeln müssen nur ausgehenden HTTPS-Verkehr erlauben, keine eingehenden Ports.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Wie funktioniert das Onboarding?</summary>
+        <div class="a">
+          <p>In drei Schritten:</p>
+          <p>1. Onboarding-Call mit uns (Konto-Einrichtung, Branding, Anwender-Liste).<br>2. Einmalige Installation des Vermittlungs-Agents (durch Ihr IT-Team oder unser Onboarding-Team).<br>3. Einladung der Anwender per Login-Link.</p>
+          <p>Typische Dauer vom Erstkontakt bis zur ersten Mitarbeiter-Sitzung: <strong>wenige Tage</strong>.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Können Anwender Dateien zwischen Browser und Zielsystem austauschen?</summary>
+        <div class="a"><p>Ja, optional. Beim Download-Dialog für die lokale RDP-Client-Variante können Anwender Zwischenablage und lokale Laufwerke aktivieren. Der Plattform-Administrator kann diese Option global einschränken.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Wird die Sitzung aufgezeichnet?</summary>
+        <div class="a"><p><strong>Nein.</strong> Eine Aufzeichnung von Bildschirminhalten findet nicht statt — bewusst nicht. Protokolliert wird ausschließlich Metadaten der Sitzung (Wer, Wann, Welches Zielsystem, Erfolgsstatus, Dauer).</p></div>
+      </details>
+    </section>
+
+    <section class="faq-section">
+      <h2><span class="num">05</span>Preis &amp; Vertrag</h2>
+
+      <details class="faq-item">
+        <summary>Was kostet anywork NG?</summary>
+        <div class="a"><p>anywork NG wird <strong>pro Nutzer pro Monat</strong> abgerechnet, monatlich kündbar. Eine konkrete Preisliste erhalten Sie auf Anfrage über das <a href="/kontakt.html">Kontaktformular</a> — die Spannweite richtet sich nach Anzahl Nutzer und gewünschten Optionen.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Gibt es eine Mindestlaufzeit?</summary>
+        <div class="a"><p>Nein. Verträge sind monatlich kündbar. Wir vertrauen darauf, dass die Plattform sich täglich neu beweist.</p></div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Können wir die Plattform mit unserem eigenen Branding ausstatten?</summary>
+        <div class="a"><p>Ja. <strong>White-Label-Branding pro Partner</strong> ist möglich — relevant für IT-Dienstleister, die anywork NG ihren Endkunden anbieten. Details über den Partner-Vertriebskanal.</p></div>
+      </details>
+    </section>
+
+    <div class="cta-box">
+      <h2>Frage nicht beantwortet?</h2>
+      <p>Schreiben Sie uns — wir antworten zeitnah, ohne Sales-Filter.</p>
+      <a href="/kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <span>© 2026 EberhardtConsulting</span>
+    <span class="links"><a href="/">Startseite</a><a href="/sicherheit.html">Sicherheit</a><a href="/vergleich.html">Einordnung</a><a href="/impressum.html">Impressum</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
