@@ -11,7 +11,7 @@
 ## Kernfakten
 - Verschlüsselung: TLS 1.2 oder neuer auf allen Transportwegen, AES-256-GCM für Secrets at rest, Argon2id für Passwort-Hashing
 - Zwei-Faktor-Authentifizierung: TOTP-Authenticator-Apps **oder** WebAuthn/FIDO2 (Passkeys, YubiKey, Nitrokey, Touch ID, Windows Hello), plus 10 Wiederherstellungscodes
-- Architektur: Browser → Cloud → Vermittlungs-Agent im Kundennetz → Zielsystem (vier verschlüsselte Sprünge)
+- Architektur: Browser → Cloud → Vermittlungs-Agent im Kundennetz → Zielsystem (drei separat verschlüsselte Abschnitte)
 - Offene Ports am Zielsystem: keine
 - Audit-Log: revisionssicher, 365 Tage Aufbewahrung, schreibgeschützt
 - Mandantenfähigkeit: auf Datenbank-Foreign-Key-Ebene durchgesetzt, nicht nur durch Anwendungs-Logik

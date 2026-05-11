@@ -59,7 +59,7 @@
         "Zwei-Faktor mit TOTP, Passkey und Sicherheitsschlüssel (WebAuthn/FIDO2)",
         "AES-256-GCM At-Rest, Argon2id Passwort-Hashing, TLS 1.2+ Wire",
         "Revisionssicheres Audit-Log mit 365 Tagen Aufbewahrung",
-        "Vier verschlüsselte Sprünge: Browser → Cloud → Agent → Zielsystem",
+        "Drei separat verschlüsselte Abschnitte: Browser↔Cloud, Cloud↔Agent, Agent↔Zielsystem",
         "Keine offenen Ports am Zielsystem",
         "Mandantenfähig per Design auf Datenbank-Ebene",
         "EU-Hosting mit Auftragsverarbeitungs-Vertrag nach Art. 28 DSGVO",
@@ -80,7 +80,7 @@
         {"@type":"Question","name":"Brauche ich für anywork NG einen VPN?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der Zugriff erfolgt aus dem Browser über die Plattform; das Zielsystem bleibt im LAN und benötigt keine offenen Ports nach außen. Es ist keine VPN-Infrastruktur notwendig."}},
         {"@type":"Question","name":"Wo werden die Daten gehostet?","acceptedAnswer":{"@type":"Answer","text":"Ausschließlich in der Europäischen Union. Sub-Auftragsverarbeiter sind im AV-Vertrag nach Art. 28 DSGVO dokumentiert."}},
         {"@type":"Question","name":"Welche Zwei-Faktor-Verfahren unterstützt anywork NG?","acceptedAnswer":{"@type":"Answer","text":"TOTP-Authenticator-Apps und WebAuthn/FIDO2 (Passkeys, Touch ID, Windows Hello, YubiKey, Nitrokey). Zusätzlich werden bei der Einrichtung zehn Wiederherstellungscodes für den Notfall ausgegeben."}},
-        {"@type":"Question","name":"Welche Verschlüsselung wird verwendet?","acceptedAnswer":{"@type":"Answer","text":"TLS 1.2 oder neuer auf allen Transportwegen, AES-256-GCM für Secrets at rest, Argon2id für Passwort-Hashing. Vier separat verschlüsselte Sprünge zwischen Browser und Zielsystem."}},
+        {"@type":"Question","name":"Welche Verschlüsselung wird verwendet?","acceptedAnswer":{"@type":"Answer","text":"TLS 1.2 oder neuer auf allen Transportwegen, AES-256-GCM für Secrets at rest, Argon2id für Passwort-Hashing. Drei separat verschlüsselte Abschnitte: Browser↔Cloud, Cloud↔Agent, Agent↔Zielsystem."}},
         {"@type":"Question","name":"Wie lange werden Audit-Logs aufbewahrt?","acceptedAnswer":{"@type":"Answer","text":"365 Tage, schreibgeschützt. Jeder Login, jede Sitzung und jede Admin-Aktion wird revisionssicher protokolliert."}},
         {"@type":"Question","name":"Speichert anywork NG Bildschirminhalte oder Tastatureingaben?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Plattform vermittelt nur Verbindungen, sie speichert keine Sitzungsinhalte — weder Bildschirminhalte noch Tastatureingaben noch Sitzungsaufzeichnungen."}},
         {"@type":"Question","name":"Wie unterscheidet sich anywork NG von klassischen Remote-Zugriffs-Lösungen?","acceptedAnswer":{"@type":"Answer","text":"Anwender greifen aus dem Browser auf ihren Arbeitsplatz zu — ohne lokalen Client, ohne VPN, ohne offene Ports am Zielsystem. Die Plattform ist mandantenfähig per Design, hostet ausschließlich in der EU, bietet phishing-resistente Zwei-Faktor-Verfahren standardmäßig und wird als SaaS betrieben — Kunden pflegen keine eigene Infrastruktur."}},
@@ -249,8 +249,8 @@
         <dd class="proof-label"><strong>offene Ports</strong> am Zielsystem</dd>
       </div>
       <div class="proof">
-        <dt class="proof-num">4</dt>
-        <dd class="proof-label"><strong>verschlüsselte Sprünge</strong> Browser → Ziel</dd>
+        <dt class="proof-num">3</dt>
+        <dd class="proof-label"><strong>verschlüsselte Abschnitte</strong> Browser → Ziel</dd>
       </div>
       <div class="proof">
         <dt class="proof-num">EU</dt>
