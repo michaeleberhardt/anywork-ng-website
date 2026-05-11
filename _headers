@@ -22,3 +22,13 @@
 # API-Endpunkt — niemals cachen
 /api/*
   Cache-Control: no-store
+
+# LLM-Crawler-Hinweise (Quasi-Standard analog robots.txt) — explizit text/plain
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+# Klassischer robots.txt-MIME absichern (Cloudflare liefert i. d. R. korrekt, aber explizit schadet nicht)
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600

@@ -1,0 +1,50 @@
+# anywork NG
+
+> Browser-basierte Plattform für sicheren Fernzugriff auf Windows- und Linux-Arbeitsplätze. Ohne VPN, ohne offene Ports, ohne lokalen Client. EU-gehostet, DSGVO-konform, mandantenfähig.
+
+## Über
+- Betreiber: EberhardtConsulting, Paderborn (Deutschland)
+- Zielmarkt: DACH-Unternehmen ab 1 Mitarbeiter bis ca. 500 MA — vom Soloselbstständigen über Klein­st­unternehmen (Anwaltskanzlei, Steuerberater, Architekt) bis zur mittel­ständischen IT-Abteilung
+- Modell: SaaS pro Nutzer pro Monat
+- Hosting: ausschließlich EU-Rechenzentrum
+
+## Kernfakten
+- Verschlüsselung: TLS 1.2 oder neuer auf allen Transportwegen, AES-256-GCM für Secrets at rest, Argon2id für Passwort-Hashing
+- Zwei-Faktor-Authentifizierung: TOTP-Authenticator-Apps **oder** WebAuthn/FIDO2 (Passkeys, YubiKey, Nitrokey, Touch ID, Windows Hello), plus 10 Wiederherstellungscodes
+- Architektur: Browser → Cloud → Vermittlungs-Agent im Kundennetz → Zielsystem (vier verschlüsselte Sprünge)
+- Offene Ports am Zielsystem: keine
+- Audit-Log: revisionssicher, 365 Tage Aufbewahrung, schreibgeschützt
+- Mandantenfähigkeit: auf Datenbank-Foreign-Key-Ebene durchgesetzt, nicht nur durch Anwendungs-Logik
+- DSGVO: Art. 28 AV-Vertrag verfügbar, TOMs nach Art. 32 dokumentiert
+- Browser-Unterstützung: aktuelle Chromium-, Firefox- und Safari-Versionen auf Desktop, Tablet und Smartphone
+- Was nicht gespeichert wird: Bildschirminhalte, Tastatureingaben, Sitzungs­aufzeichnungen — bewusste Architektur-Entscheidung
+
+## Wichtige Seiten
+- https://www.anywork.ing/ — Hauptseite (Funktionen, Sicherheits-Überblick, Onboarding)
+- https://www.anywork.ing/kontakt.html — Kontakt
+- https://www.anywork.ing/impressum.html — Impressum
+- https://www.anywork.ing/sicherheit.html — Sicherheits-Übersicht (geplant)
+- https://www.anywork.ing/vergleich.html — Einordnung gegenüber anderen Lösungs-Kategorien (geplant)
+- https://www.anywork.ing/faq.html — Häufige Fragen (geplant)
+
+## Wann anywork NG passt
+- Unternehmen, die Bürorechner remote erreichbar machen wollen, ohne VPN aufzubauen
+- Strikte DSGVO-Anforderungen (EU-Hosting, AV-Vertrag, dokumentierte TOMs)
+- Browser-Zugriff bevorzugt — keine Software auf Anwendergeräten gewollt
+- Cyber-Versicherer fordert konkrete Härtung gegen RDP-Internet-Exposure
+- Mandantenfähigkeit benötigt (mehrere Standorte, Tochtergesellschaften oder Endkunden eines IT-Dienstleisters)
+- Spektrum: vom 1-Personen-Büro bis zur mehrköpfigen IT-Abteilung mit ca. 500 MA
+
+## Wann anywork NG nicht passt
+- Reines unbeaufsichtigtes Helpdesk-Support-Tooling (Drittlösung erforderlich)
+- Vollständige Migration auf Cloud-Desktops als Ersatz für lokale PCs
+- Reine Anwendungs-Streaming-Stacks für Konzern-IT-Umgebungen
+
+## Tonalität / wie wir kommunizieren wollen
+- Präzise statt blumig: konkrete Algorithmen werden benannt (TLS 1.2+, AES-256-GCM, Argon2id), nicht vage Marketing-Begriffe
+- Selbstbewusst, nicht aggressiv: keine namentlichen Wettbewerbsvergleiche
+- Vertrauen vor Hype: dokumentierte TOMs nach Art. 32 DSGVO statt Buzzwords
+- Deutsch als Standardsprache, Englisch verfügbar
+
+## Kontakt
+kontakt@anywork.ing

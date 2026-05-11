@@ -3,20 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>anywork NG — Ihr sicherer Remote-Arbeitsplatz</title>
-<meta name="description" content="Sicherer Fernzugriff auf Windows- und Linux-Arbeitsplätze. Aus dem Browser, ohne VPN. EU-gehostet, DSGVO-konform.">
+<title>anywork NG — Sicherer Browser-Fernzugriff für Windows/Linux | DSGVO, EU-Hosting</title>
+<meta name="description" content="Browser-basierter Fernzugriff auf Windows- und Linux-Arbeitsplätze. Ohne VPN, ohne Client, ohne offene Ports. EU-Hosting, AV-Vertrag, mandantenfähig — eine moderne Alternative zu klassischen Remote-Zugriffs-Lösungen, vom Soloselbstständigen bis zur 500-MA-IT-Abteilung.">
 <meta name="theme-color" content="#0f1117">
-<meta property="og:title" content="anywork NG — Ihr sicherer Remote-Arbeitsplatz">
-<meta property="og:description" content="Browser auf. Arbeit los. Sicher per Design, EU-gehostet, audit-ready.">
+<link rel="canonical" href="https://www.anywork.ing/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<meta property="og:title" content="anywork NG — Sicherer Browser-Fernzugriff für Windows und Linux">
+<meta property="og:description" content="Browser auf. Arbeit los. Ohne VPN, ohne Client, ohne offene Ports. EU-gehostet, DSGVO-konform, mandantenfähig.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.anywork.ing">
-<meta property="og:image" content="https://www.anywork.ing/assets/og-image.svg">
+<meta property="og:url" content="https://www.anywork.ing/">
+<meta property="og:image" content="https://www.anywork.ing/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="anywork NG — Browser auf, Arbeit los. Sicherer Fernzugriff auf Windows- und Linux-Arbeitsplätze.">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="anywork NG">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="anywork NG — Sicherer Browser-Fernzugriff">
+<meta name="twitter:description" content="Browser-basierter Fernzugriff auf Windows- und Linux-Arbeitsplätze. Ohne VPN, ohne offene Ports. EU-Hosting, DSGVO-konform.">
+<meta name="twitter:image" content="https://www.anywork.ing/assets/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.anywork.ing/#org",
+      "name": "anywork NG",
+      "url": "https://www.anywork.ing/",
+      "logo": "https://www.anywork.ing/assets/apple-touch-icon.png",
+      "description": "Betreiber der Plattform anywork NG — browser-basierter, mandantenfähiger Fernzugriff für Windows- und Linux-Arbeitsplätze, EU-gehostet.",
+      "email": "kontakt@anywork.ing",
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "email": "kontakt@anywork.ing",
+        "contactType": "sales",
+        "areaServed": ["DE","AT","CH"],
+        "availableLanguage": ["de","en"]
+      }]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.anywork.ing/#app",
+      "name": "anywork NG",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser (Chromium, Firefox, Safari aktueller Versionen)",
+      "description": "Browser-basierte Plattform für sicheren Fernzugriff auf Windows- und Linux-Arbeitsplätze. Ohne VPN, ohne offene Ports, ohne Endpunkt-Software. EU-gehostet, DSGVO-konform, mandantenfähig — geeignet vom Soloselbstständigen bis zur mittelständischen IT-Abteilung.",
+      "url": "https://www.anywork.ing/",
+      "featureList": [
+        "Browser-only Zugriff ohne lokalen Client",
+        "Zwei-Faktor mit TOTP, Passkey und Sicherheitsschlüssel (WebAuthn/FIDO2)",
+        "AES-256-GCM At-Rest, Argon2id Passwort-Hashing, TLS 1.2+ Wire",
+        "Revisionssicheres Audit-Log mit 365 Tagen Aufbewahrung",
+        "Vier verschlüsselte Sprünge: Browser → Cloud → Agent → Zielsystem",
+        "Keine offenen Ports am Zielsystem",
+        "Mandantenfähig per Design auf Datenbank-Ebene",
+        "EU-Hosting mit Auftragsverarbeitungs-Vertrag nach Art. 28 DSGVO",
+        "Keine Speicherung von Bildschirminhalten oder Tastatureingaben"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.anywork.ing/kontakt.html"
+      },
+      "provider": {"@id":"https://www.anywork.ing/#org"}
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.anywork.ing/#faq",
+      "mainEntity": [
+        {"@type":"Question","name":"Brauche ich für anywork NG einen VPN?","acceptedAnswer":{"@type":"Answer","text":"Nein. Der Zugriff erfolgt aus dem Browser über die Plattform; das Zielsystem bleibt im LAN und benötigt keine offenen Ports nach außen. Es ist keine VPN-Infrastruktur notwendig."}},
+        {"@type":"Question","name":"Wo werden die Daten gehostet?","acceptedAnswer":{"@type":"Answer","text":"Ausschließlich in der Europäischen Union. Sub-Auftragsverarbeiter sind im AV-Vertrag nach Art. 28 DSGVO dokumentiert."}},
+        {"@type":"Question","name":"Welche Zwei-Faktor-Verfahren unterstützt anywork NG?","acceptedAnswer":{"@type":"Answer","text":"TOTP-Authenticator-Apps und WebAuthn/FIDO2 (Passkeys, Touch ID, Windows Hello, YubiKey, Nitrokey). Zusätzlich werden bei der Einrichtung zehn Wiederherstellungscodes für den Notfall ausgegeben."}},
+        {"@type":"Question","name":"Welche Verschlüsselung wird verwendet?","acceptedAnswer":{"@type":"Answer","text":"TLS 1.2 oder neuer auf allen Transportwegen, AES-256-GCM für Secrets at rest, Argon2id für Passwort-Hashing. Vier separat verschlüsselte Sprünge zwischen Browser und Zielsystem."}},
+        {"@type":"Question","name":"Wie lange werden Audit-Logs aufbewahrt?","acceptedAnswer":{"@type":"Answer","text":"365 Tage, schreibgeschützt. Jeder Login, jede Sitzung und jede Admin-Aktion wird revisionssicher protokolliert."}},
+        {"@type":"Question","name":"Speichert anywork NG Bildschirminhalte oder Tastatureingaben?","acceptedAnswer":{"@type":"Answer","text":"Nein. Die Plattform vermittelt nur Verbindungen, sie speichert keine Sitzungsinhalte — weder Bildschirminhalte noch Tastatureingaben noch Sitzungsaufzeichnungen."}},
+        {"@type":"Question","name":"Wie unterscheidet sich anywork NG von klassischen Remote-Zugriffs-Lösungen?","acceptedAnswer":{"@type":"Answer","text":"Anwender greifen aus dem Browser auf ihren Arbeitsplatz zu — ohne lokalen Client, ohne VPN, ohne offene Ports am Zielsystem. Die Plattform ist mandantenfähig per Design, hostet ausschließlich in der EU, bietet phishing-resistente Zwei-Faktor-Verfahren standardmäßig und wird als SaaS betrieben — Kunden pflegen keine eigene Infrastruktur."}},
+        {"@type":"Question","name":"Für welche Unternehmensgröße eignet sich anywork NG?","acceptedAnswer":{"@type":"Answer","text":"Vom Soloselbstständigen mit einem einzelnen Bürorechner über die Anwaltskanzlei mit fünf Arbeitsplätzen bis hin zur mittelständischen IT-Abteilung mit ca. 500 Mitarbeitenden. Schwerpunkt im DACH-Markt."}},
+        {"@type":"Question","name":"Welche Browser werden unterstützt?","acceptedAnswer":{"@type":"Answer","text":"Aktuelle Versionen von Chromium-basierten Browsern (Chrome, Edge, Vivaldi, Brave), Mozilla Firefox und Apple Safari — auf Desktop, Tablet und Smartphone."}}
+      ]
+    }
+  ]
+}
+</script>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #232735; --border: #2a2e3f;
     --text: #e4e7ef; --dim: #8b8fa3; --orange: #f97316; --blue: #3b82f6; --green: #22c55e;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   html { scroll-behavior: smooth; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
   a { color: var(--blue); text-decoration: none; }
@@ -148,8 +229,8 @@
 <!-- ============== Hero ============== -->
 <section class="hero">
   <div class="container">
-    <div class="hero-eyebrow">Ihr sicherer Remote-Arbeitsplatz der nächsten Generation</div>
-    <h1>Browser auf.<br><strong>Arbeit los.</strong></h1>
+    <p class="hero-eyebrow">Sicherer Browser-Fernzugriff für Windows und Linux — EU-gehostet, DSGVO-konform</p>
+    <h1>Browser auf.<br><strong>Arbeit los.</strong><span class="sr-only"> Sicherer Fernzugriff auf Windows- und Linux-Arbeitsplätze ohne VPN — vom Soloselbstständigen bis zur mittelständischen IT-Abteilung.</span></h1>
     <p class="lead">
       Anwender greifen vom Browser aus auf Windows- und Linux-Arbeitsplätze zu —
       vom PC, Laptop, Tablet oder Smartphone. <strong>Ohne VPN, ohne offene Ports, ohne Endpunkt-Software.</strong>
