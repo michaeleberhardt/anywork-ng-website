@@ -40,7 +40,7 @@
   <rect x="60" y="465" width="200" height="5" fill="url(#grad)"/>
 
   <!-- Subtitle -->
-  <text x="60" y="540" font-family="-apple-system, sans-serif" font-size="22" fill="#b8bcc8" font-weight="300">Sicherer Fernzugriff auf Windows- und Linux-Arbeitsplätze.</text>
+  <text x="60" y="540" font-family="-apple-system, sans-serif" font-size="22" fill="#b8bcc8" font-weight="300">Sicherer Fernzugriff auf Windows, Mac &amp; Terminalserver.</text>
   <text x="60" y="572" font-family="-apple-system, sans-serif" font-size="22" fill="#b8bcc8" font-weight="300">Aus dem Browser. Ohne VPN. EU-gehostet.</text>
 
   <!-- URL -->

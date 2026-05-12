@@ -1,6 +1,6 @@
 # anywork NG
 
-> Browser-basierte Plattform für sicheren Fernzugriff auf Windows- und Linux-Arbeitsplätze. Ohne VPN, ohne offene Ports, ohne lokalen Client. EU-gehostet, DSGVO-konform, mandantenfähig.
+> Browser-basierte Plattform für sicheren Fernzugriff auf Windows- und Mac-Arbeitsplätze sowie Terminalserver. Ohne VPN, ohne offene Ports, ohne lokalen Client. EU-gehostet, DSGVO-konform, mandantenfähig.
 
 ## Über
 - Betreiber: EberhardtConsulting, Paderborn (Deutschland)
