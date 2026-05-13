@@ -181,6 +181,21 @@
   .trust-card p { color: var(--dim); font-size: 14px; }
   @media (max-width: 900px) { .trust-grid { grid-template-columns: 1fr; gap: 32px; } }
 
+  /* ---- Partners ---- */
+  .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .partner-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+  .partner-logo-box { background: #ffffff; height: 120px; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .partner-logo-box img { max-height: 80px; max-width: 100%; width: auto; height: auto; object-fit: contain; }
+  .partner-info { padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 4px; }
+  .partner-info h3 { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+  .partner-info .partner-address { color: var(--dim); font-size: 14px; line-height: 1.6; margin-bottom: 12px; font-style: normal; }
+  .partner-info .partner-contact { display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+  .partner-info .partner-contact a { color: var(--blue); text-decoration: none; }
+  .partner-info .partner-contact a:hover { color: var(--orange); }
+  .partner-info .partner-contact span { color: var(--dim); }
+  @media (max-width: 900px) { .partners-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .partners-grid { grid-template-columns: 1fr; } }
+
   /* ---- CTA ---- */
   .cta-box { background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(59,130,246,0.06)); border: 1px solid var(--border); border-radius: 20px; padding: 60px 40px; text-align: center; }
   .cta-box h2 { font-size: 36px; font-weight: 200; margin-bottom: 16px; }
@@ -221,6 +236,7 @@
     <nav class="nav-links">
       <a href="#features">Funktionen</a>
       <a href="#how">So funktioniert es</a>
+      <a href="#partner">Partner</a>
       <a href="/sicherheit.html">Sicherheit</a>
       <a href="/faq.html">FAQ</a>
       <a href="/kontakt.html" class="btn btn-primary">Kontakt</a>
@@ -427,6 +443,75 @@
   </div>
 </section>
 
+<!-- ============== Partners ============== -->
+<section id="partner" class="section">
+  <div class="container">
+    <div class="section-eyebrow">Partner</div>
+    <h2>Über unsere <strong>autorisierten Partner</strong> beziehen.</h2>
+    <p class="lead">
+      anywork NG wird über regionale IT-Häuser vertrieben. Diese kennen Ihre Branche, übernehmen die einmalige Einrichtung des Vermittlungs-Agents, schulen Ihre Anwender und sind erster Ansprechpartner für alle weiteren Fragen rund um Ihren Fernzugriff.
+    </p>
+
+    <div class="partners-grid">
+
+      <article class="partner-card">
+        <div class="partner-logo-box">
+          <img src="/assets/partners/mboerso.png" alt="MBörso Computer GmbH" loading="lazy" width="240" height="80">
+        </div>
+        <div class="partner-info">
+          <h3>MBörso Computer GmbH</h3>
+          <address class="partner-address">
+            Detmolder Straße 170<br>
+            33100 Paderborn
+          </address>
+          <div class="partner-contact">
+            <span>Telefon: <a href="tel:+4952512881800">05251&nbsp;28818-0</a></span>
+            <span>E-Mail: <a href="mailto:info@mboerso.com">info@mboerso.com</a></span>
+            <span>Web: <a href="https://www.mboerso.com" target="_blank" rel="noopener">www.mboerso.com</a></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="partner-card">
+        <div class="partner-logo-box">
+          <img src="/assets/partners/muenstermann.png" alt="Münstermann GmbH" loading="lazy" width="240" height="80">
+        </div>
+        <div class="partner-info">
+          <h3>Münstermann GmbH</h3>
+          <address class="partner-address">
+            Opmünder Weg 76<br>
+            59494 Soest
+          </address>
+          <div class="partner-contact">
+            <span>Telefon: <a href="tel:+49294136480">02941&nbsp;3648-0</a></span>
+            <span>E-Mail: <a href="mailto:info@muenstermann.de">info@muenstermann.de</a></span>
+            <span>Web: <a href="https://www.muenstermann.de" target="_blank" rel="noopener">www.muenstermann.de</a></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="partner-card">
+        <div class="partner-logo-box">
+          <img src="/assets/partners/medicus.jpeg" alt="Medicus IT Solutions GmbH" loading="lazy" width="240" height="80">
+        </div>
+        <div class="partner-info">
+          <h3>Medicus IT Solutions GmbH</h3>
+          <address class="partner-address">
+            Technologiepark 31<br>
+            33100 Paderborn
+          </address>
+          <div class="partner-contact">
+            <span>Telefon: <a href="tel:+4952511869700">05251&nbsp;18697-0</a></span>
+            <span>E-Mail: <a href="mailto:paderborn@medicus-it-solutions.de">paderborn@medicus-it-solutions.de</a></span>
+            <span>Web: <a href="https://www.medicus-it-solutions.de" target="_blank" rel="noopener">www.medicus-it-solutions.de</a></span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 <!-- ============== CTA ============== -->
 <section class="section">
   <div class="container">
@@ -447,6 +532,7 @@
         <a href="/sicherheit.html">Sicherheit</a>
         <a href="/faq.html">FAQ</a>
         <a href="/vergleich.html">Einordnung</a>
+        <a href="/#partner">Partner</a>
         <a href="/impressum.html">Impressum</a>
         <a href="/kontakt.html">Kontakt</a>
       </nav>

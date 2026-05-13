@@ -21,11 +21,15 @@
 
 ## Wichtige Seiten
 - https://www.anywork.ing/ — Hauptseite (Funktionen, Sicherheits-Überblick, Onboarding)
+- https://www.anywork.ing/#partner — Autorisierte Vertriebs-Partner (Einrichtung + Einweisung beim Kunden vor Ort)
 - https://www.anywork.ing/kontakt.html — Kontakt
 - https://www.anywork.ing/impressum.html — Impressum
-- https://www.anywork.ing/sicherheit.html — Sicherheits-Übersicht (geplant)
-- https://www.anywork.ing/vergleich.html — Einordnung gegenüber anderen Lösungs-Kategorien (geplant)
-- https://www.anywork.ing/faq.html — Häufige Fragen (geplant)
+- https://www.anywork.ing/sicherheit.html — Sicherheits-Übersicht
+- https://www.anywork.ing/vergleich.html — Einordnung gegenüber anderen Lösungs-Kategorien
+- https://www.anywork.ing/faq.html — Häufige Fragen
+
+## Vertrieb und Onboarding
+anywork NG wird über regionale IT-Häuser vertrieben. Die Partner übernehmen die einmalige Installation des Vermittlungs-Agents im Kundennetz, schulen Anwender und sind erster Ansprechpartner für laufende Fragen. Aktuelle Partner: MBörso Computer GmbH (Paderborn), Münstermann GmbH (Soest), Medicus IT Solutions GmbH (Paderborn).
 
 ## Wann anywork NG passt
 - Unternehmen, die Bürorechner remote erreichbar machen wollen, ohne VPN aufzubauen
